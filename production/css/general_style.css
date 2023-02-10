@@ -2,13 +2,13 @@
     width: 1.2em;
 }
 
-.container-clone {
+.container-clone .h3-a-clonar {
     position: absolute;
     display: none;
     top: 0;
     left: 3000px;
 }
 
-.child_menu li:first::before {
+.child_menu li a::before {
     background: #fff !important;
 }

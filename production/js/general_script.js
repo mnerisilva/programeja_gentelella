@@ -40,18 +40,33 @@ const obj = [
     });
     _yyyy.append(elemento);*/
 
-    let localInserir = document.querySelector('.side-menu');
+
+    let localInserirH3 = document.querySelector('.menu_section'); // container H3
+    let localInserir = document.querySelector('.side-menu'); // container do child_menu
+    let localInserirItem = document.querySelector('.child_menu'); // container dos itens de menu
 
     let elementoOriginal = document.querySelector('.container-clone .li-a-clonar');
+    let elementoOriginalH3 = document.querySelector('.h3-a-clonar h3');
 
-    let elementoClone = elementoOriginal.cloneNode(true);
+    for(let i=0;i<7;i++){
+        if(i == 0){
+            let elementoClone = elementoOriginalH3.cloneNode(true);
+            localInserirH3.appendChild(elementoClone);
+        }
+        
+    }
 
     //localInserir.appendChild(elementoClone);
     //localInserir.insertAdjacentElement('afterbegin', elementoClone);
     //localInserir.insertAdjacentElement('beforebegin', elementoClone);
-    localInserir.insertAdjacentElement('afterbegin', elementoClone);
+
+
+
+
+
+    /*localInserir.insertAdjacentElement('afterbegin', elementoClone);
     
     let elem = localInserir.querySelector('.li-a-clonar');
-    elem.classList.remove('li-a-clonar');
+    elem.classList.remove('li-a-clonar');*/
 
 
