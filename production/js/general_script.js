@@ -47,6 +47,7 @@ const obj = [
 
     let elementoOriginal = document.querySelector('.container-clone .li-a-clonar');
     let elementoOriginalH3 = document.querySelector('.h3-a-clonar h3');
+    let elementoOriginalItem = document.querySelector('.item-a-clonar li');
 
     for(let i=0;i<7;i++){
         if(i == 0){
