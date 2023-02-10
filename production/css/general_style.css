@@ -1,3 +1,14 @@
 .site_title img {
     width: 1.2em;
 }
+
+.container-clone {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 3000px;
+}
+
+.child_menu li:first::before {
+    background: #fff !important;
+}

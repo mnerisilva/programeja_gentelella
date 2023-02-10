@@ -42,10 +42,16 @@ const obj = [
 
     let localInserir = document.querySelector('.side-menu');
 
-    let elementoOriginal = document.querySelector('.li-a-clonar');
+    let elementoOriginal = document.querySelector('.container-clone .li-a-clonar');
 
     let elementoClone = elementoOriginal.cloneNode(true);
 
-    localInserir.appendChild(elementoClone);
+    //localInserir.appendChild(elementoClone);
+    //localInserir.insertAdjacentElement('afterbegin', elementoClone);
+    //localInserir.insertAdjacentElement('beforebegin', elementoClone);
+    localInserir.insertAdjacentElement('afterbegin', elementoClone);
+    
+    let elem = localInserir.querySelector('.li-a-clonar');
+    elem.classList.remove('li-a-clonar');
 
 
