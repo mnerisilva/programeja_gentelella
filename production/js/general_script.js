@@ -5,107 +5,47 @@ const obj = [
             nome: "Introdução ao Css 1",
             aulas:
             [
-                'Introdução ao Css 1 - Aula 1',
-                'Introdução ao Css 1 - Aula 2',
-                'Introdução ao Css 1 - Aula 3'
-            ]
-        }
-    },
-    {
-        categoria: 'CSS',
-        trilha: {
-            nome: "Introdução ao Css 2",
-            aulas:
-            [
-                'Introdução ao Css 2 - Aula 1',
-                'Introdução ao Css 2 - Aula 2',
-                'Introdução ao Css 2 - Aula 3'
-            ]
-        }
-    },
-    {
-        categoria: 'CSS',
-        trilha: {
-            nome: "Introdução ao Css 3",
-            aulas:
-            [
-                'Introdução ao Css 3 - Aula 1',
-                'Introdução ao Css 3 - Aula 2',
-                'Introdução ao Css 3 - Aula 3'
-            ]
-        }
-    },
-    {
-        categoria: 'HTML',
-        trilha: {
-            nome: "Introdução ao Html 1",
-            aulas:
-            [
-                'Introdução ao Html 1 - Aula 1',
-                'Introdução ao Html 1 - Aula 2',
-                'Introdução ao Html 1 - Aula 3'
-            ]
-        }
-    },
-    {
-        categoria: 'HTML',
-        trilha: {
-            nome: "Introdução ao Html 2",
-            aulas:
-            [
-                'Introdução ao Html 2 - Aula 1',
-                'Introdução ao Html 2 - Aula 2',
-                'Introdução ao Html 2 - Aula 3'
+                '10 ideias de projetos em HTML e CSS para adicionar no portfólio!',
+                'A malas sem alça',
+                'APRENDA CSS EM 10 MINUTOS',
+                'Aprendendo o básico de html (web) | Web #1',
+                'CSS (Cascading Style Sheets) // Dicionário do Programador',
+                'CSS3: Aprenda como Funciona a Estrutura CSS',
+                'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
             ]
         }
     }
 ]
 
 
-
-  //  const _h3MenuSection = document.querySelector('#sidebar-menu .menu_section h3');
-   // const _linkTrilha = document.querySelector('#sidebar-menu .menu_section .side-menu a .trilha-title');
-  //  _h3MenuSection.textContent = obj[0].categoria;
-   // _h3MenuSection.style.backgraoundColor = 'red !important';
+    const elemento = document.createElement('h3');
+    //const _h3MenuSection = document.querySelector('#sidebar-menu .menu_section h3');
+    //const _linkTrilha = document.querySelector('#sidebar-menu .menu_section .side-menu a .trilha-title');
+    //_h3MenuSection.textContent = obj[0].categoria;
+    //_h3MenuSection.style.backgraoundColor = 'red !important';
     //_linkTrilha.textContent = obj[0].trilha.nome;
 
-    //const _xxxx = document.querySelectorAll('#sidebar-menu .menu_section .side-menu li .child_menu li a');
-    const _sidebarMenu = document.querySelector('#sidebar-menu');
+    //const _xxxx = document.querySelectorAll('#sidebar-menu .menu_section ul.side-menu li ul.child_menu li a');
+    //let _yyyy = document.querySelector('#sidebar-menu .menu_section .side-menu li');
     //console.log(_xxxx.length);
     //console.log(_xxxx[0]);
+    //console.log(obj[0].trilha.aulas.length);
+    //console.log(_xxxx);
 
     let contador = 0;
-    let string = '';
+    /*obj[0].trilha.aulas.forEach(function(item){
+        console.log('Item: '+item);
+        _xxxx[contador].textContent = item;
+        contador = contador + 1;
+    });
+    _yyyy.append(elemento);*/
 
-    for(item of obj[contador].trilha.aulas){
+    let localInserir = document.querySelector('.side-menu');
 
-        string = `
-                    <div class="menu_section">
-        `;
-    
-        string = string + `
-                    <h3>${obj[contador].categoria}</h3>
-        `;
+    let elementoOriginal = document.querySelector('.li-a-clonar');
 
-        string = string + `        
-            <ul class="nav side-menu">
-                <li><a><i class="fa fa-bug"></i> ${obj[contador].trilha.nome} <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-            `;
-                        obj[contador].trilha.aulas.forEach(function(aula){
-                            string = string + `
-                            <li><a href="">${aula}</a></li>
-                            `;
-                        });
-        string = string + `            
-                    </ul>
-                </li>  
-            </ul> 
-            `;
-    
-        string = string + `
-            </div>
-        `;
-    }
+    let elementoClone = elementoOriginal.cloneNode(true);
 
-    _sidebarMenu.innerHTML = string;
+    localInserir.appendChild(elementoClone);
+
+
