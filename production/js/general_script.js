@@ -40,6 +40,7 @@ const obj = [
     });
     _yyyy.append(elemento);*/
 
+    const arr = [];
 
     let localInserirH3 = document.querySelector('.menu_section'); // container H3
     let localInserir = document.querySelector('.side-menu'); // container do child_menu
@@ -51,10 +52,19 @@ const obj = [
 
     for(let i=0;i<7;i++){
         if(i == 0){
-            let elementoClone = elementoOriginalH3.cloneNode(true);
-            localInserirH3.appendChild(elementoClone);
+            arr[0] = elementoOriginalH3.cloneNode(true);
+            localInserirH3.prepend(arr[0]);
+            arr[0] = elementoOriginal.cloneNode(true);
+            console.log(arr[0].innerText.trim());
+            arr[0].querySelector('a span').innerText = ' Html ';
+            localInserir.prepend(arr[0]);
+            arr.shift();
         }
-        
+        localInserirItem = $('.side-menu').find('.child_menu:last');
+        arr.shift();
+        arr[0] = elementoOriginalItem.cloneNode(true);
+        localInserirItem.prepend(arr[0]);
+        arr.shift();
     }
 
     //localInserir.appendChild(elementoClone);
