@@ -68,22 +68,23 @@ const obj = [
     let LI_Item = document.querySelector('.item-a-clonar li');
 
     
-    for(item of obj){        
+    for(item of obj){  
+            localInserirH3 = document.querySelector('.side-menu:last-child'); 
             arr[0] = H3.cloneNode(true);
             arr[0].innerText = item.categoria;
-            localInserirH3.prepend(arr[0]);
+            localInserirH3.append(arr[0]);
             arr = [];
             arr[0] = LI_trilha.cloneNode(true);
             arr[0].querySelector('a span').innerText = ` ${item.trilha.nome} `;
-            localInserir.prepend(arr[0]);
+            localInserir.append(arr[0]);
             arr = [];
         for(element of item.trilha.aulas){
-            localInserirItem = $('.side-menu').find('.child_menu:last');
+            localInserirItem = $('.side-menu').find('.child_menu:last-child');
             arr = [];
             arr[0] = LI_Item.cloneNode(true);
             arr[0].querySelector('a').innerText = element;
             arr[0].querySelector('a').setAttribute('href', 'index.html');
-            localInserirItem.prepend(arr[0]);
+            localInserirItem.append(arr[0]);
             arr = [];           
         };
     }
