@@ -1,17 +1,17 @@
 const obj = [
     {
-        categoria: 'CSS',
+        categoria: 'HTML',
         trilha: {
-            nome: "Introdução ao Css 1",
+            nome: "Introdução ao Html 1",
             aulas:
             [
                 '10 ideias de projetos em HTML e CSS para adicionar no portfólio!',
-                'A malas sem alça',
-                'APRENDA CSS EM 10 MINUTOS',
+                'A malas sem alça html',
+                'APRENDA Html EM 10 MINUTOS',
                 'Aprendendo o básico de html (web) | Web #1',
-                'CSS (Cascading Style Sheets) // Dicionário do Programador',
-                'CSS3: Aprenda como Funciona a Estrutura CSS',
-                'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
+                'Html (Cascading Style Sheets) // Dicionário do Programador',
+                'Html: Aprenda como Funciona a Estrutura CSS',
+                'O QUE É HTML? (SELETORES, PROPRIEDADES E VALORES)'
             ]
         }
     }
@@ -40,7 +40,8 @@ const obj = [
     });
     _yyyy.append(elemento);*/
 
-    const arr = [];
+    let arr = [];
+    let taglink = null;
 
     let localInserirH3 = document.querySelector('.menu_section'); // container H3
     let localInserir = document.querySelector('.side-menu'); // container do child_menu
@@ -50,21 +51,33 @@ const obj = [
     let elementoOriginalH3 = document.querySelector('.h3-a-clonar h3');
     let elementoOriginalItem = document.querySelector('.item-a-clonar li');
 
-    for(let i=0;i<7;i++){
-        if(i == 0){
+    //for(let i=0;i<7;i++){
+    for(item of obj){
+        
             arr[0] = elementoOriginalH3.cloneNode(true);
+            arr[0].innerText = item.categoria;
             localInserirH3.prepend(arr[0]);
             arr[0] = elementoOriginal.cloneNode(true);
             console.log(arr[0].innerText.trim());
-            arr[0].querySelector('a span').innerText = ' Html ';
+            arr[0].querySelector('a span').innerText = ` ${item.trilha.nome} `;
             localInserir.prepend(arr[0]);
-            arr.shift();
-        }
-        localInserirItem = $('.side-menu').find('.child_menu:last');
-        arr.shift();
-        arr[0] = elementoOriginalItem.cloneNode(true);
-        localInserirItem.prepend(arr[0]);
-        arr.shift();
+            arr = [];
+            console.log(typeof item.trilha.aulas)
+        for(element of item.trilha.aulas){
+            localInserirItem = $('.side-menu').find('.child_menu:last');
+            arr = [];
+            console.log(elementoOriginalItem);
+            arr[0] = elementoOriginalItem.cloneNode(true);
+            console.log(arr[0]);
+            arr[0].remove('a');
+            //arr[0].innerText = element;
+            localInserirItem.prepend(arr[0]);
+            taglink = document.createElement('a');
+            taglink.innerText = element;
+            arr[0].appendChild(taglink);
+
+            arr = [];           
+        };
     }
 
     //localInserir.appendChild(elementoClone);
@@ -81,3 +94,107 @@ const obj = [
     elem.classList.remove('li-a-clonar');*/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*,
+    {
+        categoria: 'CSS',
+        trilha: {
+            nome: "Introdução ao Css 1",
+            aulas:
+            [
+                '10 ideias de projetos em HTML e CSS para adicionar no portfólio!',
+                'A malas sem alça',
+                'APRENDA CSS EM 10 MINUTOS',
+                'Aprendendo o básico de html (web) | Web #1',
+                'CSS (Cascading Style Sheets) // Dicionário do Programador',
+                'CSS3: Aprenda como Funciona a Estrutura CSS',
+                'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
+            ]
+        }
+    }*/
