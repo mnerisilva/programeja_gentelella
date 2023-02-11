@@ -12,3 +12,7 @@
 .child_menu li a::before {
     background: #fff !important;
 }
+
+.nav.side-menu>li.current-page, .nav.side-menu>li {
+    border-right: 5px transparent;
+}

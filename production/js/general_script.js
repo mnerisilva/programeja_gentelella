@@ -54,7 +54,7 @@ const obj = [
         _xxxx[contador].textContent = item;
         contador = contador + 1;
     });
-    _yyyy.append(elemento);*/
+    _yyyy.prepend(elemento);*/
 
     let arr = [];
     let taglink = null;
@@ -71,11 +71,11 @@ const obj = [
     for(item of obj){        
             arr[0] = H3.cloneNode(true);
             arr[0].innerText = item.categoria;
-            H3.append(arr[0]);
+            localInserirH3.prepend(arr[0]);
             arr = [];
             arr[0] = LI_trilha.cloneNode(true);
             arr[0].querySelector('a span').innerText = ` ${item.trilha.nome} `;
-            localInserir.append(arr[0]);
+            localInserir.prepend(arr[0]);
             arr = [];
         for(element of item.trilha.aulas){
             localInserirItem = $('.side-menu').find('.child_menu:last');
@@ -83,7 +83,7 @@ const obj = [
             arr[0] = LI_Item.cloneNode(true);
             arr[0].querySelector('a').innerText = element;
             arr[0].querySelector('a').setAttribute('href', 'index.html');
-            localInserirItem.append(arr[0]);
+            localInserirItem.prepend(arr[0]);
             arr = [];           
         };
     }
