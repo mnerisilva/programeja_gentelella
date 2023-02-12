@@ -39,8 +39,9 @@ const obj = [
         menubar:false,
         language: 'pt_BR',
         placeholder: 'Insira aqui seu trecho de código',
-        height: 350,
+        height: 200,
         branding: false,
+        resize: true,
         plugins: [
             'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
             'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
@@ -49,16 +50,16 @@ const obj = [
         toolbar_mode: 'sliding',
         toolbar1:'bold italic backcolor | alignleft aligncenter ' +
         'alignright alignjustify | bullist numlist | ' +
-        'removeformat | link image | outdent indent | help',
+        'removeformat | link image | outdent indent | help | fullscreen',
         toolbar2:'|   | codesample |   |',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
     });
 
-/*<iframe id="video-abertura" allowfullscreen="" class="embed-responsive-item" src="https://www.youtube.com/embed/mHW1Hsqlp6A?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0" autoplay="1" allowfullscreen=""></iframe>*/
+
 $(document).ready(function(){
         const _embedVideoYoutube = document.querySelector('.video-content .embed-video-youtube');
         const _videoContent = document.querySelector('.video-content');
-        const _frontPageTitle = document.querySelector('h2');
+        const _frontPageTitle = document.createElement('h2');
         _frontPageTitle.classList.add('front-page-title')
         _frontPageTitle.innerText = 'Por que todos deveriam aprender a programar?';
         const _iframe = document.createElement('iframe');

@@ -1,3 +1,4 @@
+
 .site_title img {
     width: 1.2em;
 }
@@ -32,6 +33,52 @@
 }
 
 .posts {
-    padding-left: .9em;
-    padding-right: .9em;
+    padding: 1.9em;
+    height: 90vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 760px) {
+    html {
+        overflow: hidden;
+    }
+}
+
+.container-clone, .h3-a-clonar, .item-a-clonar {
+    display: none;
+}
+
+.esquerda {
+    height: 90vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+/**  STYLE 11 */
+.esquerda::-webkit-scrollbar-track {
+    width: 2px;
+  border-radius: 10px !important;
+  background: rgba(0,0,0,0.1) !important;
+  border: 1px solid #ccc !important;
+}
+
+.esquerda::-webkit-scrollbar-thumb {
+    width: 2px;
+  border-radius: 10px !important;
+  background: linear-gradient(left, #fff, #e4e4e4) !important;
+  border: 1px solid #aaa !important;
+}
+
+.esquerda::-webkit-scrollbar-thumb:hover {
+    width: 2px;
+  background: #fff !important;
+}
+
+.esquerda::-webkit-scrollbar-thumb:active {
+    width: 2px;
+  background: linear-gradient(left, #22ADD4, #1E98BA) !important;
 }
