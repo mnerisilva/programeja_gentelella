@@ -16,3 +16,22 @@
 .nav.side-menu>li.current-page, .nav.side-menu>li {
     border-right: 5px transparent;
 }
+
+.front-page-title {
+    transition: opacity .3s, text-align 1.8s;
+    text-align: left;
+    opacity: 1;
+    width: 100%;
+    /*text-align: center;*/
+    font-size: 2em !important;
+}
+
+#form-salva-post {
+    margin-left: .9em;
+    margin-right: .9em;
+}
+
+.posts {
+    padding-left: .9em;
+    padding-right: .9em;
+}

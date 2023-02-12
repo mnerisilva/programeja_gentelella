@@ -33,6 +33,51 @@ const obj = [
     }
 ]
 
+     // TinyMCE
+     tinymce.init({
+        selector: '#editor1',
+        menubar:false,
+        language: 'pt_BR',
+        placeholder: 'Insira aqui seu trecho de código',
+        height: 350,
+        branding: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount', 'codesample', 'fullscreen'
+        ],
+        toolbar_mode: 'sliding',
+        toolbar1:'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist | ' +
+        'removeformat | link image | outdent indent | help',
+        toolbar2:'|   | codesample |   |',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+    });
+
+/*<iframe id="video-abertura" allowfullscreen="" class="embed-responsive-item" src="https://www.youtube.com/embed/mHW1Hsqlp6A?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0" autoplay="1" allowfullscreen=""></iframe>*/
+$(document).ready(function(){
+        const _embedVideoYoutube = document.querySelector('.video-content .embed-video-youtube');
+        const _videoContent = document.querySelector('.video-content');
+        const _frontPageTitle = document.querySelector('h2');
+        _frontPageTitle.classList.add('front-page-title')
+        _frontPageTitle.innerText = 'Por que todos deveriam aprender a programar?';
+        const _iframe = document.createElement('iframe');
+        console.log(_iframe);
+            _iframe.setAttribute('id', 'video-abertura');
+            _iframe.setAttribute('src', 'https://www.youtube.com/embed/mHW1Hsqlp6A?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0');
+            _iframe.classList.add('embed-responsive-item');
+            _iframe.setAttribute('allowfullscreen', '');
+            _iframe.setAttribute('autoplay', 1);
+            _videoContent.prepend(_frontPageTitle);
+            _embedVideoYoutube.prepend(_iframe);
+            setTimeout(() => {
+                _frontPageTitle.style.opacity = 1;           
+            }, 1500);
+            setTimeout(() => {           
+                _frontPageTitle.style.textAlign = 'center';           
+            }, 5000);
+});
+
 
     const elemento = document.createElement('h3');
     //const _h3MenuSection = document.querySelector('#sidebar-menu .menu_section h3');
@@ -87,6 +132,7 @@ const obj = [
             localInserirItem.append(arr[0]);
             arr = [];           
         };
+        console.log(item);
     }
 
 
