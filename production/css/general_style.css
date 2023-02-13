@@ -100,3 +100,19 @@
 .menu_section h3 {
     padding-left: 13px;
 }
+
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: #424f5c94;
+}
+
+.nav.side-menu .child_menu {
+    display: none;
+}
+
+.menu_section h3 {
+    margin-bottom: 10px !important;
+}
+
+.nav.side-menu>li.current-page, .nav.side-menu>li {
+    margin-bottom: 20px;
+}

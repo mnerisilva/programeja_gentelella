@@ -53,6 +53,8 @@ const obj = [
     let LI_trilha = document.querySelector('.container-clone .li-a-clonar');
     let LI_Item = document.querySelector('.item-a-clonar li');
 
+    localInserir.style.opacity = 0;
+
     
     /*for(item of obj){  
             localInserirH3 = localInserir; 
@@ -85,21 +87,34 @@ const obj = [
             arr[0] = LI_trilha.cloneNode(true);
             arr[0].querySelector('a span').innerText = ` ${objeto.trilha.nome} `;
             child_menu = arr[0].querySelector('.child_menu');
+            localInserir.append(arr[0]);
+            arr = [];
             objeto.trilha.videos.forEach(function(video){
                 arr[1] = LI_Item.cloneNode(true);
                 arr[1].querySelector('a').innerText = video;
                 child_menu.append(arr[1]);
+                arr = [];
             });
         //console.log(objeto.categoria, objeto.trilha.nome, objeto.trilha.aulas);
-            localInserir.append(arr[0]);
-            arr = [];
-            let lis = localInserir.querySelectorAll('.child_menu');
-
-            for(li of lis ){
-                li.style.display = 'none !important';
-            };
-
     });
+    setTimeout(() => {
+        let todos = localInserir.querySelectorAll('.active');
+        console.log(todos);
+        for(ob of todos){
+            console.log(ob);
+            if(contador > 0){
+                ob.querySelector('ul').style.display = 'none';
+                ob.classList.remove('active');             
+            }
+            contador = contador + 1;
+        }
+    }, 100);
+
+    setTimeout(() => {
+        localInserir.style.opacity = 1;        
+    }, 300);
+
+
 
 
 
