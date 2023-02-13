@@ -28,8 +28,8 @@
 }
 
 #form-salva-post {
-    margin-left: .9em;
-    margin-right: .9em;
+    /*margin-left: .9em;
+    margin-right: .9em;*/
 }
 
 .posts {
@@ -52,6 +52,7 @@
 .esquerda {
     height: 90vh;
     overflow: auto;
+    overflow: scroll;
     overflow-x: hidden;
 }
 
@@ -63,6 +64,7 @@
   * {
     scrollbar-width: auto;
     scrollbar-color: #8f54a0 #ffffff;
+    scrollbar-color: #73879C #ffffff;
   }
 
   /* Chrome, Edge, and Safari */
@@ -76,6 +78,25 @@
 
   *::-webkit-scrollbar-thumb {
     background-color: #8f54a0;
+    background-color: #73879C;
     border-radius: 10px;
     border: 3px solid #ffffff;
   }
+
+
+
+  .fixed_height_320 {
+    height: auto !important;
+    }
+
+  .video-content .x_content {
+    height: auto;
+  }
+
+  .esquerda .panel_toolbox {
+    min-width: 0;
+}
+
+.menu_section h3 {
+    padding-left: 13px;
+}
