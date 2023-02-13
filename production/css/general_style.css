@@ -116,3 +116,11 @@
 .nav.side-menu>li.current-page, .nav.side-menu>li {
     margin-bottom: 20px;
 }
+
+.nav.side-menu>li.current-page, .nav.side-menu>li {
+    border-bottom: solid thin #222a3273;
+}
+
+.nav.side-menu>li.current-page, .nav.side-menu>li {
+    border-right: 5px solid #2a3f54;
+}
