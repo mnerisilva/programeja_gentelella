@@ -118,6 +118,7 @@
 }
 
 .nav.side-menu>li.current-page, .nav.side-menu>li {
+    border-top: solid thin #222a3273;
     border-bottom: solid thin #222a3273;
 }
 
@@ -130,12 +131,16 @@ footer {
 }
 
 .menu_section h3 {
-    margin-bottom: 10px !important;
-    width: fit-content;
-    border-left: solid thin #d1d1d1;
-    border-top: solid thin;
-    border-right: solid thin;
-    border-radius: 3px;
+    margin-bottom: 0 !important;
+    width: fit-content; -moz-fit-content: fit-content;
+    border-left: solid thin #222a329e;
+    border-left: solid thin #5b6874;
+    border-top: solid thin #222a329e;
+    border-top: solid thin #647587;
+    border-right: solid thin #222a329e;
+    border-right: solid thin #5b6874;
+    border-radius: 4px 4px 0 0;
     padding-top: 6px;
+    padding-bottom: 6px;
     padding-right: 13px;
 }
