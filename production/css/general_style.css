@@ -103,7 +103,8 @@
 }
 
 .nav>li>a:hover, .nav>li>a:focus {
-    background-color: #424f5c94;
+    /*background-color: #424f5c94;*/
+    background: rgba(255,255,255,0.05);
 }
 
 .nav.side-menu .child_menu {
@@ -154,4 +155,8 @@ footer {
 
 .active a span.fa {
     margin-right: 1px
+}
+
+.current-page:hover {
+    background: rgba(255,255,255,0.05);
 }
