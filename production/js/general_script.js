@@ -151,14 +151,18 @@ const obj = [
             localInserir.style.opacity = 1;        
         }, 10); 
         
-        let teste = document.querySelectorAll('.side-menu li');
-        teste.forEach(function(item){
-            item.addEventListener('click', function(e){
-                console.log('clicou no link do menu');
-                e.target.parentNode.parentNode.classList.add('active');
-                e.target.parentNode.parentNode.querySelector('.child_menu').style.display = 'block';
-            });
-        })
+
+
+        init_sidebar();
+
+
+        let todos = localInserir.querySelectorAll('.active');
+        for(ob of todos){
+            ob.classList.remove('li-a-clonar');
+                ob.querySelector('ul').style.display = 'none';
+                ob.classList.remove('active');
+            contador = contador + 1;
+        }        
     
     }, 20);
 
