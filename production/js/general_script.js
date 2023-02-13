@@ -51,9 +51,16 @@ const obj = [
     }
 ]
 
+    const obje = [];
+
+    console.log(obj);
+
+
+    let _userIdDoUsuario = '29';
 
         tinymceCarregamento();
         carregaVideo();
+        //montaMenuTrilhaVideosDinamicamente();
 
 
     const elemento = document.createElement('h3');
@@ -71,6 +78,97 @@ const obj = [
     let LI_Item = document.querySelector('.item-a-clonar li');
 
     localInserir.style.opacity = 0;
+
+
+    // MONTAGEM ESTRUTURA DO MENU LATERAL COM AS TRILHAS E LINKS DE CONTEÚDOS DO USUÁRIO LOGADO - PÁGINA HOME AO LOGAR NO SISTEMA PARA USUÁRIOS DO TIPO DE ACESSO 2 - USUÁRIO COMUM (ALUNO)
+//function montaMenuTrilhaVideosDinamicamente() { 
+    let __link = null;
+    console.log('CONTEÚDO DA VARIÁVEL _userIdDoUsuario AQUI: '+_userIdDoUsuario);
+    let formData = {
+        user_logado: _userIdDoUsuario
+    }
+    $.ajax({
+        type: "POST",
+        url: "php/backend/monta_json_menu_categia_trilhas_videos.php",
+        data: formData,
+        dataType: "json",
+        encode: true
+    }).done(function (data) {
+        console.log(data);
+        let cont = 0;
+        let _cont = 0;
+        let arrAux = [];
+        let catAux = '';
+        let trilhaAux = '';
+        let videoAux = '';
+        data.forEach(function(item){
+            if(item.trilha_name != trilhaAux){ 
+                obje[cont] = {categoria:item.abrev_categoria, trilha: {nome: item.trilha_name, video: [item.conteudo_descricao]}};
+                trilhaAux = item.trilha_name;
+                _cont = cont;
+                cont++;
+            } else if(item.trilha_name == trilhaAux){
+                obje[_cont].trilha.video.push(item.conteudo_descricao);
+            }
+        }); 
+
+    setTimeout(() => { 
+        let categoria = '';
+
+        obje.forEach(function(objeto){
+            console.log(obje) ;
+                if(categoria != objeto.categoria){
+                    localInserirH3 = localInserir; 
+                    arr[0] = H3.cloneNode(true);
+                    arr[0].innerText = objeto.categoria;
+                    localInserirH3.append(arr[0]);
+                    categoria = objeto.categoria;
+                }
+                arr = [];
+                arr[0] = LI_trilha.cloneNode(true);
+                arr[0].querySelector('a span').innerText = ` ${objeto.trilha.nome} `;
+                child_menu = arr[0].querySelector('.child_menu');
+                localInserir.append(arr[0]);
+                arr = [];
+                objeto.trilha.video.forEach(function(video){
+                    arr[1] = LI_Item.cloneNode(true);
+                    arr[1].querySelector('a').innerText = video;
+                    child_menu.append(arr[1]);
+                    arr = [];
+                });
+        });
+
+        /*setTimeout(() => {
+            let todos = localInserir.querySelectorAll('.active');
+            for(ob of todos){
+                ob.classList.remove('li-a-clonar');
+                    ob.querySelector('ul').style.display = 'none';
+                    ob.classList.remove('active');
+                contador = contador + 1;
+            }
+        }, 100);*/
+        setTimeout(() => {
+            localInserir.style.opacity = 1;        
+        }, 10); 
+        
+        let teste = document.querySelectorAll('.side-menu li');
+        teste.forEach(function(item){
+            item.addEventListener('click', function(e){
+                console.log('clicou no link do menu');
+                e.target.parentNode.parentNode.classList.add('active');
+                e.target.parentNode.parentNode.querySelector('.child_menu').style.display = 'block';
+            });
+        })
+    
+    }, 20);
+
+        
+    }); 
+
+
+
+
+//} 
 
     
     /*for(item of obj){  
@@ -95,46 +193,6 @@ const obj = [
         console.log(item);
     }*/
 
-    let categoria = '';
-    obj.forEach(function(objeto){ 
-            if(categoria != objeto.categoria){
-                localInserirH3 = localInserir; 
-                arr[0] = H3.cloneNode(true);
-                arr[0].innerText = objeto.categoria;
-                localInserirH3.append(arr[0]);
-                categoria = objeto.categoria;
-            }
-            arr = [];
-            arr[0] = LI_trilha.cloneNode(true);
-            arr[0].querySelector('a span').innerText = ` ${objeto.trilha.nome} `;
-            child_menu = arr[0].querySelector('.child_menu');
-            localInserir.append(arr[0]);
-            arr = [];
-            objeto.trilha.videos.forEach(function(video){
-                arr[1] = LI_Item.cloneNode(true);
-                arr[1].querySelector('a').innerText = video;
-                child_menu.append(arr[1]);
-                arr = [];
-            });
-        //console.log(objeto.categoria, objeto.trilha.nome, objeto.trilha.aulas);
-    });
-    setTimeout(() => {
-        let todos = localInserir.querySelectorAll('.active');
-        console.log(todos);
-        for(ob of todos){
-            console.log(ob);
-            ob.classList.remove('li-a-clonar');
-            //if(contador > 0){
-                ob.querySelector('ul').style.display = 'none';
-                ob.classList.remove('active');             
-            //}
-            contador = contador + 1;
-        }
-    }, 100);
-
-    setTimeout(() => {
-        localInserir.style.opacity = 1;        
-    }, 300);
 
 
 
@@ -219,7 +277,6 @@ const obj = [
 
 
 function tinymceCarregamento(){
-
      // TinyMCE
      tinymce.init({
         selector: '#editor1',
@@ -257,7 +314,6 @@ function tinymceCarregamento(){
                 const _xTitle = document.querySelector('.esquerda .x_title h2');
                 _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> Por que todos deveriam aprender a programar?`;
                 const _iframe = document.createElement('iframe');
-                console.log(_iframe);
                     _iframe.setAttribute('id', 'video-abertura');
                     _iframe.setAttribute('src', 'https://www.youtube.com/embed/mHW1Hsqlp6A?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0');
                     _iframe.classList.add('embed-responsive-item');
@@ -266,3 +322,31 @@ function tinymceCarregamento(){
                     _embedVideoYoutube.prepend(_iframe);
         });                
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+    
