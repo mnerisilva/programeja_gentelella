@@ -124,3 +124,18 @@
 .nav.side-menu>li.current-page, .nav.side-menu>li {
     border-right: 5px solid #2a3f54;
 }
+
+footer {
+    border-top: solid thin #2a3f541c;
+}
+
+.menu_section h3 {
+    margin-bottom: 10px !important;
+    width: fit-content;
+    border-left: solid thin #d1d1d1;
+    border-top: solid thin;
+    border-right: solid thin;
+    border-radius: 3px;
+    padding-top: 6px;
+    padding-right: 13px;
+}
