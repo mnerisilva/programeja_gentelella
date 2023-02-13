@@ -51,6 +51,12 @@ const obj = [
     }
 ]
 
+    const _menuToggle = document.querySelector('#menu_toggle');
+    const _body = document.querySelector('body');
+    _menuToggle.addEventListener('click', function(){
+            _body.classList.toggle('nav-md');
+            _body.classList.toggle('nav-sm');
+    });
     const obje = [];
 
     console.log(obj);

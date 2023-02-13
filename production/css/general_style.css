@@ -151,3 +151,7 @@ footer {
 .span-nome-trilha {
     margin-left: 5px;
 }
+
+.active a span.fa {
+    margin-right: 1px
+}
