@@ -1,56 +1,3 @@
-const obj = [
-    {
-        categoria: "HTML",
-        trilha: {
-            nome: "Introdução ao Html 1",
-            videos:
-            [
-                "10 ideias de projetos em HTML e CSS para adicionar no portfólio!",
-                "A malas sem alça html",
-                "APRENDA Html EM 10 MINUTOS"//,
-                //'Aprendendo o básico de html (web) | Web #1',
-                //'Html (Cascading Style Sheets) // Dicionário do Programador',
-                //'Html: Aprenda como Funciona a Estrutura CSS',
-                //'O QUE É HTML? (SELETORES, PROPRIEDADES E VALORES)'
-            ]
-        }
-    },
-    {
-        categoria: "CSS",
-        trilha: {
-            nome: "Introdução ao Css 1",
-            videos:
-            [
-                //"10 ideias de projetos em CSS para adicionar no portfólio!",
-                //"A malas sem alça",
-                //"APRENDA CSS EM 10 MINUTOS",
-                //"CSS Responsivo: A importância e COMO FAZER"
-                'Aprendendo o básico de html (web) | Web #1',
-                'CSS (Cascading Style Sheets) // Dicionário do Programador',
-                'CSS3: Aprenda como Funciona a Estrutura CSS',
-                'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
-            ]
-        }
-    },
-    {
-        categoria: "CSS",
-        trilha: {
-            nome: "Introdução ao Css 2",
-            videos:
-            [
-                "10 ideias de projetos em CSS para adicionar no portfólio!",
-                "A malas sem alça",
-                "APRENDA CSS EM 10 MINUTOS",
-                "CSS Responsivo: A importância e COMO FAZER"
-                //'Aprendendo o básico de html (web) | Web #1',
-                //'CSS (Cascading Style Sheets) // Dicionário do Programador',
-                //'CSS3: Aprenda como Funciona a Estrutura CSS',
-                //'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
-            ]
-        }
-    }
-]
-
     const _menuToggle = document.querySelector('#menu_toggle');
     const _body = document.querySelector('body');
     _menuToggle.addEventListener('click', function(){
@@ -58,8 +5,6 @@ const obj = [
             _body.classList.toggle('nav-sm');
     });
     const obje = [];
-
-    console.log(obj);
 
 
     let _userIdDoUsuario = '29';
@@ -109,7 +54,7 @@ const obj = [
         let videoAux = '';
         data.forEach(function(item){
             if(item.trilha_name != trilhaAux){ 
-                obje[cont] = {categoria:item.abrev_categoria, trilha: {nome: item.trilha_name, video: [item.conteudo_descricao]}};
+                obje[cont] = {categoria:item.abrev_categoria,  trilha: {nome: item.trilha_name, video: [item.conteudo_descricao]}};
                 trilhaAux = item.trilha_name;
                 _cont = cont;
                 cont++;
