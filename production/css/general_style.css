@@ -114,7 +114,7 @@
 }
 
 .nav.side-menu>li.current-page, .nav.side-menu>li {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 .nav.side-menu>li.current-page, .nav.side-menu>li {
@@ -143,4 +143,10 @@ footer {
     padding-top: 6px;
     padding-bottom: 6px;
     padding-right: 13px;
+    margin-left: 4px;
+    margin-top: 20px;
+}
+
+.span-nome-trilha {
+    margin-left: 5px;
 }

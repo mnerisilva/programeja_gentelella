@@ -21,6 +21,23 @@ const obj = [
             nome: "Introdução ao Css 1",
             videos:
             [
+                //"10 ideias de projetos em CSS para adicionar no portfólio!",
+                //"A malas sem alça",
+                //"APRENDA CSS EM 10 MINUTOS",
+                //"CSS Responsivo: A importância e COMO FAZER"
+                'Aprendendo o básico de html (web) | Web #1',
+                'CSS (Cascading Style Sheets) // Dicionário do Programador',
+                'CSS3: Aprenda como Funciona a Estrutura CSS',
+                'O QUE É CSS? (SELETORES, PROPRIEDADES E VALORES)'
+            ]
+        }
+    },
+    {
+        categoria: "CSS",
+        trilha: {
+            nome: "Introdução ao Css 2",
+            videos:
+            [
                 "10 ideias de projetos em CSS para adicionar no portfólio!",
                 "A malas sem alça",
                 "APRENDA CSS EM 10 MINUTOS",
@@ -78,11 +95,15 @@ const obj = [
         console.log(item);
     }*/
 
+    let categoria = '';
     obj.forEach(function(objeto){ 
-            localInserirH3 = localInserir; 
-            arr[0] = H3.cloneNode(true);
-            arr[0].innerText = objeto.categoria;
-            localInserirH3.append(arr[0]);
+            if(categoria != objeto.categoria){
+                localInserirH3 = localInserir; 
+                arr[0] = H3.cloneNode(true);
+                arr[0].innerText = objeto.categoria;
+                localInserirH3.append(arr[0]);
+                categoria = objeto.categoria;
+            }
             arr = [];
             arr[0] = LI_trilha.cloneNode(true);
             arr[0].querySelector('a span').innerText = ` ${objeto.trilha.nome} `;
@@ -102,10 +123,11 @@ const obj = [
         console.log(todos);
         for(ob of todos){
             console.log(ob);
-            if(contador > 0){
+            ob.classList.remove('li-a-clonar');
+            //if(contador > 0){
                 ob.querySelector('ul').style.display = 'none';
                 ob.classList.remove('active');             
-            }
+            //}
             contador = contador + 1;
         }
     }, 100);
@@ -232,9 +254,8 @@ function tinymceCarregamento(){
         $(document).ready(function(){
                 const _embedVideoYoutube = document.querySelector('.video-content .embed-video-youtube');
                 const _videoContent = document.querySelector('.video-content');
-                const _frontPageTitle = document.createElement('h2');
-                _frontPageTitle.classList.add('front-page-title')
-                _frontPageTitle.innerText = 'Por que todos deveriam aprender a programar?';
+                const _xTitle = document.querySelector('.esquerda .x_title h2');
+                _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> Por que todos deveriam aprender a programar?`;
                 const _iframe = document.createElement('iframe');
                 console.log(_iframe);
                     _iframe.setAttribute('id', 'video-abertura');
@@ -242,13 +263,6 @@ function tinymceCarregamento(){
                     _iframe.classList.add('embed-responsive-item');
                     _iframe.setAttribute('allowfullscreen', '');
                     _iframe.setAttribute('autoplay', 1);
-                    _videoContent.prepend(_frontPageTitle);
                     _embedVideoYoutube.prepend(_iframe);
-                    setTimeout(() => {
-                        _frontPageTitle.style.opacity = 1;           
-                    }, 1500);
-                    setTimeout(() => {           
-                        _frontPageTitle.style.textAlign = 'center';           
-                    }, 5000);
         });                
     }
