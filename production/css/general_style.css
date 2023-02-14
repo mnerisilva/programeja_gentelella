@@ -335,6 +335,14 @@ pre[class*=language-].line-numbers {
     align-items: center;
 }
 
+.post-footer span {
+    color: #d1d1d1;
+}
+
+.post-footer i {
+    opacity: .5;
+}
+
 .post-title {
     padding: .5em .2em;
 }
