@@ -295,11 +295,19 @@ pre[class*=language-].line-numbers {
     z-index: 999;
 }
 
+.post-tools i {
+    margin-left: .5rem;
+}
+
 .post-header .post-date h3 {
     margin-left: .5em;
     font-size: 1rem;
     font-weight: 400;
     font-style: italic;
+}
+
+.post-header .post-date h3 span {
+    font-size: .8rem !important;
 }
 
 .post-header {
@@ -331,3 +339,9 @@ pre[class*=language-].line-numbers {
     color: #fff;
 }
 
+
+
+/* cor classe active menu_section ativo*/
+.nav.side-menu>li.current-page, .nav.side-menu>li.active {
+    border-right: 5px solid goldenrod;
+}
