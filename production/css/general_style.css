@@ -98,6 +98,12 @@
     min-width: 0;
 }
 
+.menu_section { 
+    height: 83vh;
+    overflow: auto;
+    overflow-x: hidden;    
+}
+
 .menu_section h3 {
     padding-left: 13px;
 }
