@@ -136,6 +136,8 @@
                     _formSalvaPost.classList.remove('remove');
                 }
                 _formSalvaPost.classList.remove('remove');
+                _formSalvaPost.style.opacity = .4;
+                _formSalvaPost.style.pointerEvents = 'none';
                 _listaDePosts.classList.remove('remove');
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
             });
