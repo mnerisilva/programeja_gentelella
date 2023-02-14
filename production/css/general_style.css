@@ -160,3 +160,11 @@ footer {
 .current-page:hover {
     background: rgba(255,255,255,0.05);
 }
+
+.top_nav .navbar-right li {
+    position: relative;
+}
+
+.titulo-do-video {
+    margin-left: .5em;
+}

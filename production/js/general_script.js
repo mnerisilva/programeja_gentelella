@@ -10,7 +10,7 @@
     let _userIdDoUsuario = '29';
 
         tinymceCarregamento();
-        carregaVideo('mHW1Hsqlp6A');
+        carregaVideo('mHW1Hsqlp6A', 'Por que todos deveriam aprender a programar?');
         //montaMenuTrilhaVideosDinamicamente();
 
 
@@ -122,7 +122,7 @@
             link.addEventListener('click', function(e){
                 e.preventDefault();
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
-                carregaVideo(e.target.dataset.codigoyt);
+                carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
             });
         });
     
@@ -273,22 +273,14 @@ function tinymceCarregamento(){
 
 
 
-    function carregaVideo(codigoyt){
+    function carregaVideo(codigoyt, titulo_video){
         $(document).ready(function(){
-            console.log(codigoyt, typeof codigoyt);
                 const _embedVideoYoutube = document.querySelector('.video-content .embed-video-youtube');
                 const _videoContent = document.querySelector('.video-content');
                 const _xTitle = document.querySelector('.esquerda .x_title h2');
-                _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> Por que todos deveriam aprender a programar?`;
+                _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> <span class="titulo-do-video">${titulo_video}</span>`;
                 const _video = document.querySelector('#video-abertura');
-
-                //const _iframe = document.createElement('iframe');
-                    //_iframe.setAttribute('id', 'video-abertura');
-                    _video.setAttribute('src', `https://www.youtube.com/embed/${codigoyt}?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0`);
-                    //_iframe.classList.add('embed-responsive-item');
-                    //_iframe.setAttribute('allowfullscreen', '');
-                    //_iframe.setAttribute('autoplay', 1);
-                    //_embedVideoYoutube.prepend(_iframe);
+                _video.setAttribute('src', `https://www.youtube.com/embed/${codigoyt}?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0`);
         });                
     }
 
