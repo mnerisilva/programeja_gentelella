@@ -210,3 +210,103 @@ footer {
 .id-usuario-logado {
     display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* prism */
+code[class*=language-], pre[class*=language-] {
+    color: #767171;
+}
+
+pre[class*=language-] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+code[class*=language-], pre[class*=language-] {
+    color: #767171;
+}
+
+.post-content pre {
+    font-size: initial;
+    background-color: #f7f7f7;
+}
+
+:not(pre)>code[class*=language-], pre[class*=language-] {
+    background: #f5f2f0 !important;
+}
+
+
+
+
+/* lista de posts e post */
+
+.lista-de-posts .post {
+    transition: background-color .3s;
+}
+
+.post {
+    transition: opacity .2s, height .4s, opacity .4s;
+    overflow: overlay;
+    opacity: 0;
+}
+
+.post {
+    border: none;
+    border: solid thin #e1e1e170;
+    height: auto;
+    /* border-radius: 5px; */
+}
+
+.post .post-header {
+    background: aliceblue;
+    background: #f9f9f9;
+    background: #f7f7f7;
+}
+
+.post-header {
+    position: relative;
+    overflow: overlay;
+    transition: opacity .6s, height .6s;
+    padding: 0.5em 0.1em;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.post-header .post-date h3 {
+    margin-left: .5em;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-title {
+    padding: .5em .2em;
+}
+
+.post-content p {
+    font-size: initial;
+    height: auto;
+}
+
