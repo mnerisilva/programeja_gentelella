@@ -317,3 +317,17 @@ pre[class*=language-].line-numbers {
     height: auto;
 }
 
+
+/* fontawesome ícones do sistema - achei que ficou bom*/
+
+.fa-solid, .fas {
+    font-weight: 900;
+    color: goldenrod !important;
+}
+
+.bg-green {
+    background: goldenrod !important;
+    border: 1px solid goldenrod !important;
+    color: #fff;
+}
+
