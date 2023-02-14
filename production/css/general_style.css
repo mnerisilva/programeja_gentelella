@@ -176,15 +176,18 @@ footer {
 }
 
 #form-salva-post {
-    display: block;
-    transition: opacity .3s;
-    transition-delay: .7s;
     opacity: 1;
+    visibility: visible;
+    transition: all 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360);
+    pointer-events: all;
 }
 
 .remove {
-    display: none !important;
-    opacity: 0;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    
+    transition: all 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360);
+    pointer-events: none;
 }
 
 @media screen and (min-width: 780px) {
@@ -193,7 +196,11 @@ footer {
     }
     .menu_section { 
         height: 83vh;
-        overflow: auto;
+        overflow: overlay;
         overflow-x: hidden;    
     }
+}
+
+.sidebar-footer {
+    display: none;
 }

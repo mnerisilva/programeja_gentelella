@@ -59,12 +59,12 @@
         let videoAux = '';
         data.forEach(function(item){
             if(item.trilha_name != trilhaAux){ 
-                obje[cont] = {categoria:item.abrev_categoria,  trilha: {nome: item.trilha_name, video: [{titulo: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube}]}};
+                obje[cont] = {categoria:item.abrev_categoria,  trilha: {nome: item.trilha_name, video: [{conteudo_descricao: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube, trilha_id: item.trilha_id, id_conteudo: item.id_conteudo}]}};
                 trilhaAux = item.trilha_name;
                 _cont = cont;
                 cont++;
             } else if(item.trilha_name == trilhaAux){
-                obje[_cont].trilha.video.push({titulo: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube});
+                obje[_cont].trilha.video.push({conteudo_descricao: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube, trilha_id: item.trilha_id, id_conteudo: item.id_conteudo});
             }
         }); 
 
@@ -88,8 +88,11 @@
                 arr = [];
                 objeto.trilha.video.forEach(function(video){
                     arr[1] = LI_Item.cloneNode(true);
-                    arr[1].querySelector('a').innerText = video.titulo;
+                    arr[1].querySelector('a').innerText = video.conteudo_descricao;
                     arr[1].querySelector('a').setAttribute('data-codigoyt', video.codigoyt);
+                    arr[1].querySelector('a').setAttribute('data-conteudo_descricao', video.conteudo_descricao);
+                    arr[1].querySelector('a').setAttribute('data-trilha_id', video.trilha_id);
+                    arr[1].querySelector('a').setAttribute('data-id_conteudo', video.id_conteudo);
                     //arr[1].querySelector('a').setAttribute('data-codigoyt', objeto.codigoyt);
                     child_menu.append(arr[1]);
                     arr = [];
