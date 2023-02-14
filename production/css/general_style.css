@@ -54,6 +54,7 @@
 
 .esquerda {
     height: 90vh;
+    height: 100vh;
     overflow: auto;
     overflow: scroll;
     overflow-x: hidden;
@@ -268,6 +269,7 @@ pre[class*=language-].line-numbers {
 
 .lista-de-posts .post {
     transition: background-color .3s;
+    background-color: snow;
 }
 
 .post {
