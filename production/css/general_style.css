@@ -68,6 +68,7 @@
     scrollbar-width: auto;
     scrollbar-color: #8f54a0 #ffffff;
     scrollbar-color: #73879C #ffffff;
+    scrollbar-color: #bbbcbd #ffffff;
   }
 
   /* Chrome, Edge, and Safari */
@@ -82,6 +83,7 @@
   *::-webkit-scrollbar-thumb {
     background-color: #8f54a0;
     background-color: #73879C;
+    background-color: #bbbcbd;
     border-radius: 10px;
     border: 3px solid #ffffff;
   }
@@ -255,7 +257,8 @@ pre[class*=language-].line-numbers {
     position: relative;
     padding-left: 3.8em;
     counter-reset: linenumber;
-    box-shadow: 4px 6px 8px -7px #00000059;
+    /*box-shadow: 4px 6px 8px -7px #00000059;*/
+    box-shadow: 0px 0px 3px 0px #00000059;
 }
 
 
