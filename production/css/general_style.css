@@ -98,11 +98,7 @@
     min-width: 0;
 }
 
-.menu_section { 
-    height: 83vh;
-    overflow: auto;
-    overflow-x: hidden;    
-}
+
 
 .menu_section h3 {
     padding-left: 13px;
@@ -173,4 +169,31 @@ footer {
 
 .titulo-do-video {
     margin-left: .5em;
+}
+
+.esconde {
+    
+}
+
+#form-salva-post {
+    display: block;
+    transition: opacity .3s;
+    transition-delay: .7s;
+    opacity: 1;
+}
+
+.remove {
+    display: none !important;
+    opacity: 0;
+}
+
+@media screen and (min-width: 780px) {
+    #menu_toggle {
+        display: none;
+    }
+    .menu_section { 
+        height: 83vh;
+        overflow: auto;
+        overflow-x: hidden;    
+    }
 }

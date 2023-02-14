@@ -1,3 +1,8 @@
+    const _formSalvaPost = document.querySelector('#form-salva-post');
+    _formSalvaPost.classList.add('remove');
+    
+
+
     const _menuToggle = document.querySelector('#menu_toggle');
     const _body = document.querySelector('body');
     _menuToggle.addEventListener('click', function(){
@@ -122,6 +127,10 @@
             link.addEventListener('click', function(e){
                 e.preventDefault();
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
+                if(_formSalvaPost.classList.contains('remove')){
+                    _formSalvaPost.classList.remove('remove');
+                }
+                _formSalvaPost.classList.remove('remove');
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
             });
         });
