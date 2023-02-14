@@ -54,7 +54,7 @@
 
 .esquerda {
     height: 90vh;
-    height: 100vh;
+    /*height: 100vh;*/
     overflow: auto;
     overflow: scroll;
     overflow-x: hidden;
