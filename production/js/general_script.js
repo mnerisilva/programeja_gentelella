@@ -1,5 +1,7 @@
     const _formSalvaPost = document.querySelector('#form-salva-post');
     _formSalvaPost.classList.add('remove');
+
+    const _listaDePosts = document.querySelector('.lista-de-posts');
     
 
 
@@ -134,6 +136,7 @@
                     _formSalvaPost.classList.remove('remove');
                 }
                 _formSalvaPost.classList.remove('remove');
+                _listaDePosts.classList.remove('remove');
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
             });
         });
