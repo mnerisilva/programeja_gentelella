@@ -10,7 +10,7 @@
     let _userIdDoUsuario = '29';
 
         tinymceCarregamento();
-        carregaVideo('mHW1Hsqlp6A');
+        carregaVideo();
         //montaMenuTrilhaVideosDinamicamente();
 
 
@@ -54,12 +54,12 @@
         let videoAux = '';
         data.forEach(function(item){
             if(item.trilha_name != trilhaAux){ 
-                obje[cont] = {categoria:item.abrev_categoria,  trilha: {nome: item.trilha_name, video: [{titulo: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube}]}};
+                obje[cont] = {categoria:item.abrev_categoria,  trilha: {nome: item.trilha_name, video: [item.conteudo_descricao]}, codigoyt: item.conteudo_codigoyoutube};
                 trilhaAux = item.trilha_name;
                 _cont = cont;
                 cont++;
             } else if(item.trilha_name == trilhaAux){
-                obje[_cont].trilha.video.push({titulo: item.conteudo_descricao, codigoyt: item.conteudo_codigoyoutube});
+                obje[_cont].trilha.video.push(item.conteudo_descricao);
             }
         }); 
 
@@ -83,8 +83,8 @@
                 arr = [];
                 objeto.trilha.video.forEach(function(video){
                     arr[1] = LI_Item.cloneNode(true);
-                    arr[1].querySelector('a').innerText = video.titulo;
-                    arr[1].querySelector('a').setAttribute('data-codigoyt', video.codigoyt);
+                    arr[1].querySelector('a').innerText = video;
+                    arr[1].querySelector('a').setAttribute('data-codigoyt', objeto.codigoyt);
                     //arr[1].querySelector('a').setAttribute('data-codigoyt', objeto.codigoyt);
                     child_menu.append(arr[1]);
                     arr = [];
@@ -115,16 +115,7 @@
                 ob.querySelector('ul').style.display = 'none';
                 ob.classList.remove('active');
             contador = contador + 1;
-        }   
-        
-        const _videoLinks = document.querySelectorAll('.side-menu .child_menu li a');
-        _videoLinks.forEach(function(link){
-            link.addEventListener('click', function(e){
-                e.preventDefault();
-                //console.log(e.target.innerText, e.target.dataset.codigoyt);
-                carregaVideo(e.target.dataset.codigoyt);
-            });
-        });
+        }        
     
     }, 20);
 
@@ -273,22 +264,19 @@ function tinymceCarregamento(){
 
 
 
-    function carregaVideo(codigoyt){
+    function carregaVideo(){
         $(document).ready(function(){
-            console.log(codigoyt, typeof codigoyt);
                 const _embedVideoYoutube = document.querySelector('.video-content .embed-video-youtube');
                 const _videoContent = document.querySelector('.video-content');
                 const _xTitle = document.querySelector('.esquerda .x_title h2');
                 _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> Por que todos deveriam aprender a programar?`;
-                const _video = document.querySelector('#video-abertura');
-
-                //const _iframe = document.createElement('iframe');
-                    //_iframe.setAttribute('id', 'video-abertura');
-                    _video.setAttribute('src', `https://www.youtube.com/embed/${codigoyt}?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0`);
-                    //_iframe.classList.add('embed-responsive-item');
-                    //_iframe.setAttribute('allowfullscreen', '');
-                    //_iframe.setAttribute('autoplay', 1);
-                    //_embedVideoYoutube.prepend(_iframe);
+                const _iframe = document.createElement('iframe');
+                    _iframe.setAttribute('id', 'video-abertura');
+                    _iframe.setAttribute('src', 'https://www.youtube.com/embed/mHW1Hsqlp6A?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0');
+                    _iframe.classList.add('embed-responsive-item');
+                    _iframe.setAttribute('allowfullscreen', '');
+                    _iframe.setAttribute('autoplay', 1);
+                    _embedVideoYoutube.prepend(_iframe);
         });                
     }
 
