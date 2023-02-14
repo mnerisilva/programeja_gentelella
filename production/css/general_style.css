@@ -206,3 +206,7 @@ footer {
 .sidebar-footer {
     display: none;
 }
+
+.id-usuario-logado {
+    display: none;
+}

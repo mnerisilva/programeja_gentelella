@@ -12,6 +12,11 @@
             _body.classList.toggle('nav-sm');
     });
     const obje = [];
+    let _idConteudoEscolhidoUserLogado = '';
+    let _trilhaIdEscolhidaUserLogado = '';
+    let _userIdUserLogado = ''; 
+    let _snippetPostTitleRightHome = '';
+    let _idConteudo = '';
 
 
     let _userIdDoUsuario = '29';
@@ -131,6 +136,11 @@
         _videoLinks.forEach(function(link){
             link.addEventListener('click', function(e){
                 e.preventDefault();
+                console.log(e.target);
+                console.log(typeof e.target);
+                console.log(e.target.dataset.trilha_id);
+                _idConteudoEscolhidoUserLogado = e.target.dataset.id_conteudo;              
+                _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
                 if(_formSalvaPost.classList.contains('remove')){
                     _formSalvaPost.classList.remove('remove');
@@ -140,6 +150,7 @@
                 _formSalvaPost.style.pointerEvents = 'none';
                 _listaDePosts.classList.remove('remove');
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
+                listaPostsPorConteudo(_idConteudoEscolhidoUserLogado);
             });
         });
     
@@ -153,28 +164,6 @@
 
 //} 
 
-    
-    /*for(item of obj){  
-            localInserirH3 = localInserir; 
-            arr[0] = H3.cloneNode(true);
-            arr[0].innerText = item.categoria;
-            localInserirH3.append(arr[0]);
-            arr = [];
-            arr[0] = LI_trilha.cloneNode(true);
-            arr[0].querySelector('a span').innerText = ` ${item.trilha.nome} `;
-            localInserir.append(arr[0]);
-            arr = [];
-        for(element of item.trilha.aulas){
-            localInserirItem = $('.side-menu').find('.child_menu:last-child');
-            arr = [];
-            arr[0] = LI_Item.cloneNode(true);
-            arr[0].querySelector('a').innerText = element;
-            arr[0].querySelector('a').setAttribute('href', 'index.html');
-            localInserirItem.append(arr[0]);
-            arr = [];           
-        };
-        console.log(item);
-    }*/
 
 
 
@@ -266,7 +255,7 @@ function tinymceCarregamento(){
         menubar:false,
         language: 'pt_BR',
         placeholder: 'Insira aqui seu trecho de código',
-        height: 200,
+        height: 180,
         branding: false,
         resize: true,
         plugins: [
@@ -276,9 +265,7 @@ function tinymceCarregamento(){
         ],
         toolbar_mode: 'sliding',
         toolbar1:'bold italic backcolor | alignleft aligncenter ' +
-        'alignright alignjustify | bullist numlist | ' +
-        'removeformat | link image | outdent indent | help | fullscreen',
-        toolbar2:'|   | codesample |   |',
+        'removeformat | link image | help | fullscreen|   | codesample |   |',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
     });    
 }
@@ -328,3 +315,121 @@ function tinymceCarregamento(){
 
 
     
+
+    function listaPostsPorConteudo(id_conteudo) { // lista POSTs do vídeo escolhido no menu lateral (dentro da trilha, é claro) - visão MINHAS TRILHAS. DO ALUNO
+        var formData = {
+            id_conteudo : id_conteudo
+        };    
+        $.ajax({
+            type: "POST",
+            url: "php/backend/lista_posts_por_conteudo.php",
+            data: formData,
+            dataType: "json",
+            encode: true
+        }).done(function (data) { 
+            console.log(data);
+            _divListaDePosts.innerHTML = '';
+            for(post of data){
+                console.log(data);
+                console.log(post.post_dateupdate);
+                let _dateArr = post.post_dateupdate.split(" ");
+                let _postDate = _dateArr[0];
+                let _postHour = _dateArr[1];
+                let _dateDDMMAAAA = _postDate.split("-");
+                let _dia = _dateDDMMAAAA[2];
+                let _mes = _dateDDMMAAAA[1];
+                _mes = _mes.length == 1 ? `0${_mes}` : _mes;
+                let _ano = _dateDDMMAAAA[0];
+                console.log(_dateArr);
+                let str = `
+                <div class="post mb-4 p-4">
+                    <div class="post-header">
+                        <span class="post-date">
+                            <h3>
+                            ${`<i class="fa-solid fa-calendar-days"></i>&nbsp;<span>${_dia}/${_mes}/${_ano}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="fa-solid fa-clock"></i>&nbsp;<span class="hora">${_postHour}</span> `}
+                            </h3>
+                        </span>
+                        <span class="post-tools">
+                            <i class="fa-solid fa-pencil edit-post" data-post_id_edit="${post.post_id}"></i>
+                            <i class="fa-solid fa-trash-can trash-post" data-post_id="${post.post_id}"></i>
+                        </span>
+                    </div>
+                    <hr>
+                    <div class="post-title">
+                        <h5>${post.post_title}</h5>
+                    </div>
+                    <div class="post-content">${post.post}</div>
+                    <div class="post-footer">
+                    ${`<small><i class="fa-solid fa-hashtag"></i><span>${post.post_id}</span></small>`}
+                    </div>
+                </div>
+                `;  
+                $(_divListaDePosts).prepend(str);               
+                Prism.highlightAll();
+                let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
+                _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
+            }
+            let _trashPost = document.querySelectorAll('.trash-post');
+            let _editPost = document.querySelectorAll('.edit-post');
+            let _editTitleEditor = document.querySelector('.container-editor #post_title');
+            let _editContentEditor = document.querySelector('.container-editor #post_content');
+            _trashPost.forEach(function(trashPostIcon){
+                setTimeout(function(){
+                    trashPostIcon.parentNode.parentNode.parentNode.style.opacity = 1;
+                }, 500)
+                trashPostIcon.addEventListener('click', function(e){
+                    e.target.parentNode.style.opacity = 0;
+                    e.target.parentNode.style.pointerEvents = 'none';
+                    $(e.target).closest('.post-header').find('.confirma-exclusao-post').css("margin-top", 0);
+                    $(e.target).closest('.post-header').find('.confirma-exclusao-post').css("pointer-events", 'all');
+                    $(e.target).closest('.post-header').find('.confirma-exclusao-post').css("display", 'block');
+                    let alvo = e.target;
+                    let _leftTrash = `${e.target.getBoundingClientRect().left-180}px`;
+                    let _topTrash = `${e.target.getBoundingClientRect().top}px`;
+                    console.log(e.target.getBoundingClientRect());
+                    console.log(_leftTrash);
+                    console.log(_topTrash);
+                    let confirm = document.querySelector('.confirma-exclusao-post');
+                    confirm.style.left = _leftTrash;
+                    confirm.style.top = _topTrash;
+                    document.querySelector('.mascara').style.display = 'block';
+                    setTimeout(function(){
+                        confirm.style.opacity = 1;
+                        document.querySelector('.mascara').style.opacity = 1;
+                        document.querySelector('.main_container').style.pointerEvents = 'none';
+                    },400)
+                    _postAExcluir = e.target.dataset.post_id;
+                    _postDaListaASerExcluido = e.target.parentNode.parentNode.parentNode;
+                    console.log(_postDaListaASerExcluido);
+
+                });
+            });
+            _editPost.forEach(function(editPostIcon){
+                editPostIcon.addEventListener('click', function(e){
+                    console.log(`Clicou no edit do post: ${e.target.dataset.post_id_edit}`);
+                    //e.target.parentNode.classList.add('post-tools-color-change');
+                    desativaEditDeletePosts();
+                    _postEditContext = e.target.parentNode.parentNode.parentNode;
+                    _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
+                    _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
+                    _postEditContext.style.backgroundColor = "beige";
+
+                    console.log(_postEditContextTitle.textContent);
+                    _editTitleEditor.value = _postEditContextTitle.textContent;
+                    let __operation = document.querySelector('#operation');
+                    __operation = __operation.value = 'update';
+                    document.querySelector('.salva-texto-do-editor').textContent = 'Atualizar';
+                    
+                    console.log('--------------------'+e.target.dataset.post_id_edit);
+                    document.querySelector('#post_id_edit').value = e.target.dataset.post_id_edit;
+
+                    Prism.highlightAll();
+                    //CKEDITOR.instances.editor1.setData(_postEditContextContent);                            
+                    tinymce.get("editor1").setContent(_postEditContextContent);
+                });
+            });
+        })
+
+    } 
