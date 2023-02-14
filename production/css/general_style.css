@@ -251,6 +251,13 @@ code[class*=language-], pre[class*=language-] {
     background: #f5f2f0 !important;
 }
 
+pre[class*=language-].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+    box-shadow: 4px 6px 8px -7px #00000059;
+}
+
 
 
 
