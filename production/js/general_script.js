@@ -17,6 +17,8 @@
     let _userIdUserLogado = ''; 
     let _snippetPostTitleRightHome = '';
     let _idConteudo = '';
+    
+    const _divListaDePosts = document.querySelector('.lista-de-posts');
 
 
     let _userIdDoUsuario = '29';
