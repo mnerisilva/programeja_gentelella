@@ -91,7 +91,7 @@
                 }
                 arr = [];
                 arr[0] = LI_trilha.cloneNode(true);
-                arr[0].querySelector('a span').innerText = ` ${objeto.trilha.nome} `;
+                arr[0].querySelector('a span span').innerText = ` ${objeto.trilha.nome} `;
                 child_menu = arr[0].querySelector('.child_menu');
                 localInserir.append(arr[0]);
                 arr = [];

@@ -53,6 +53,7 @@
 }
 
 .esquerda {
+    position: relative;
     height: 90vh;
     /*height: 100vh;*/
     overflow: auto;
@@ -112,6 +113,7 @@
 .nav>li>a:hover, .nav>li>a:focus {
     /*background-color: #424f5c94;*/
     background: rgb(255 255 255 / 20%);
+    background: rgb(255 255 255 / 7%);
 }
 
 .nav.side-menu .child_menu {
@@ -143,11 +145,11 @@ footer {
     margin-bottom: 0 !important;
     width: fit-content; -moz-fit-content: fit-content;
     border-left: solid thin #222a329e;
-    border-left: solid thin #5b6874;
+    border-left: solid thin #334a60;
     border-top: solid thin #222a329e;
     border-top: solid thin #647587;
     border-right: solid thin #222a329e;
-    border-right: solid thin #5b6874;
+    /*border-right: solid thin #5b6874;*/
     border-radius: 4px 4px 0 0;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -157,7 +159,7 @@ footer {
 }
 
 .span-nome-trilha {
-    margin-left: 5px;
+    margin-left: 8px;
 }
 
 .active a span.fa {
@@ -371,4 +373,11 @@ pre[class*=language-].line-numbers {
 /* cor classe active menu_section ativo*/
 .nav.side-menu>li.current-page, .nav.side-menu>li.active {
     border-right: 5px solid goldenrod;
+}
+
+.add-new-post {
+    position: absolute;
+    font-size: 4em !important;
+    right: 0.5em;
+    bottom: 0.5em;
 }
