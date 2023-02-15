@@ -2,6 +2,14 @@
     _formSalvaPost.classList.add('remove');
 
     const _listaDePosts = document.querySelector('.lista-de-posts');
+    _listaDePosts.innerHTML = '';
+    
+     const _addNewPost = document.querySelector('.add-new-post');
+
+     _addNewPost.addEventListener('click', function(e){
+        _formSalvaPost.classList.remove('remove');
+        e.target.classList.add('remove');
+     });
     
 
 
@@ -144,12 +152,7 @@
                 _idConteudoEscolhidoUserLogado = e.target.dataset.id_conteudo;              
                 _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
-                if(_formSalvaPost.classList.contains('remove')){
-                    _formSalvaPost.classList.remove('remove');
-                }
-                _formSalvaPost.classList.remove('remove');
-                _formSalvaPost.style.opacity = .4;
-                _formSalvaPost.style.pointerEvents = 'none';
+                _addNewPost.classList.remove('remove');
                 _listaDePosts.classList.remove('remove');
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
                 listaPostsPorConteudo(_idConteudoEscolhidoUserLogado);
