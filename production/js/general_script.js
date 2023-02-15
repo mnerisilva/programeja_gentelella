@@ -27,7 +27,15 @@
     let _idConteudo = '';
     
     const _divListaDePosts = document.querySelector('.lista-de-posts');
+    
 
+    const _post = document.querySelector('.lista-de-posts');
+
+    
+    let _postEditContext = '';
+    let _postEditContextTitle = '';
+    let _postEditContextContent = '';
+    let _operation = '';
 
     let _userIdDoUsuario = '29';
 
@@ -51,6 +59,94 @@
     let LI_Item = document.querySelector('.item-a-clonar li');
 
     localInserir.style.opacity = 0;
+
+
+    const _btnSalvaTextoDoEditor = document.querySelector('.salva-texto-do-editor');
+    const _btnSalvaPostCancelar = document.querySelector('.salva-post-cancelar');
+
+
+    //_btnSalvaTextoDoEditor.addEventListener('click', function(){
+        $(_formSalvaPost).submit(function(event){
+            event.preventDefault();           
+            Prism.highlightAll();
+            //let _conteudoTextareaEditor = CKEDITOR.instances.editor1.getData();
+            console.log('MMMMMMM '+tinymce.activeEditor);
+            let _conteudoTextareaEditor = tinymce.get("editor1").getContent();
+            let _postTitle = document.querySelector('#post_title').value; 
+            let _operation = _formSalvaPost.querySelector('#operation');    // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente
+            _operation = _operation.value;
+            if(_conteudoTextareaEditor == '' || _postTitle.trim() == ''){
+                _containerEditor.classList.add('efeito-fade');            
+                console.log('algum campo não foi preenchido');
+                setTimeout(function(){
+                    _containerEditor.classList.remove('efeito-fade');
+                }, 100);
+                return;
+            }
+            let _post_id_edit = _formSalvaPost.querySelector('#post_id_edit');    // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente
+            _post_id_edit = _post_id_edit.value;                                  // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente                                  // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente
+            Prism.highlightAll();
+            //CKEDITOR.instances.editor1.setData('');
+            tinymce.get("editor1").setContent("");
+            document.querySelector('#post_title').value = '';
+            let formData = {
+                id_conteudo: _idConteudoEscolhidoUserLogado,
+                trilha_id: _trilhaIdEscolhidaUserLogado,
+                user_id: _userIdUserLogado,
+                post_title: _postTitle,
+                post: _conteudoTextareaEditor,
+                operation: _operation,
+                post_id_edit: _post_id_edit
+            }; 
+            console.log('o que está chegando no _formSalvaPost');
+            console.log(formData);
+            $.ajax({
+                type: "POST",
+                url: "php/backend/salva_post.php",
+                data: formData,
+                dataType: "json",
+                encode: true,
+                beforeSend: function(){
+                    console.log('aguardando resposta do backend');
+                },
+                success: function (data) {
+                    console.log('TTTTTTTTTTTTTTTTTTTTTT '+data[0].status);
+                    _post.style.height = 'auto';
+                    if(data[0].status === 'update'){
+                        _postEditContext.style.height = 'auto';
+                        _btnSalvaTextoDoEditor.textContent = 'Salvar';
+                        //_btnSalvaTextoDoEditor.classList.add('desabilita');
+                        //_postEditContext = 
+                        _postEditContext.querySelector('.post-title h5').textContent = formData.post_title;
+                        _postEditContext.querySelector('.post-content').innerHTML = formData.post;                    
+                        _postEditContext.style.backgroundColor = 'initial';
+                        // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
+                        _operation = _formSalvaPost.querySelector('#operation');
+                        _operation.value = 'save';                
+                    } else {           
+                        _operation = _formSalvaPost.querySelector('#operation');
+                        // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
+                        _operation.value = 'save';
+                        _divListaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
+                        console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
+                        listaPostsPorConteudo(formData.id_conteudo);                       
+                    }
+                    Prism.highlightAll();
+                    //_postEditContext.style.height = 'auto';
+                    //_post.style.height = 'auto';
+                    ativaEditDeletePosts();
+                }
+            });
+        });
+    
+        
+        // Botão "cancelar" form-salva-post
+        _btnSalvaPostCancelar.addEventListener('click', function(){ 
+            limpaEditor();
+            ativaEditDeletePosts();
+        });
+
+
 
 
     // MONTAGEM ESTRUTURA DO MENU LATERAL COM AS TRILHAS E LINKS DE CONTEÚDOS DO USUÁRIO LOGADO - PÁGINA HOME AO LOGAR NO SISTEMA PARA USUÁRIOS DO TIPO DE ACESSO 2 - USUÁRIO COMUM (ALUNO)
@@ -438,3 +534,38 @@ function tinymceCarregamento(){
         })
 
     } 
+
+
+    function limpaEditor(){
+        console.log('limpaEditor');
+        document.querySelector('#post_title').value = '';      
+        tinymce.get("editor1").setContent(""); 
+        let __posts = document.querySelectorAll('.post');
+        __posts.forEach(function(__post){
+            __post.style.backgroundColor = "initial";
+        });
+        _btnSalvaTextoDoEditor.textContent = 'Salvar';
+        let _operation = document.querySelector('#operation');
+        _operation.value = 'save';
+    
+    }
+    
+    
+    function desativaEditDeletePosts(){
+        let elements = document.querySelectorAll('.lista-de-posts .post .post-header .post-tools > i');
+        elements.forEach(function(item){
+            item.classList.add('post-tools-color-change');
+        });    
+        let _mask = document.querySelector('.mask-left-col');
+        _mask.classList.add('mask-show');
+    }
+    
+    function ativaEditDeletePosts(){
+        let elements = document.querySelectorAll('.lista-de-posts .post .post-header .post-tools > i');
+        elements.forEach(function(item){
+            item.classList.remove('post-tools-color-change');
+        });    
+        let _mask = document.querySelector('.mask-left-col');
+        _mask.classList.remove('mask-show');
+    }
+    
