@@ -376,8 +376,16 @@ pre[class*=language-].line-numbers {
 }
 
 .add-new-post {
+    transition: transform .3s;
     position: absolute;
     font-size: 4em !important;
     right: 0.5em;
     bottom: 0.5em;
+    background-color: #fff;
+}
+
+.add-new-post:hover {
+    cursor: pointer;
+    transition: transform .3s;
+    transform:scale(1.2);
 }
