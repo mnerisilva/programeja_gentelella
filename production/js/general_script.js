@@ -27,6 +27,10 @@
     let _userIdUserLogado = ''; 
     let _snippetPostTitleRightHome = '';
     let _idConteudo = '';
+
+
+    const _mask = document.querySelector('.mask-left-col');
+
     
     const _divListaDePosts = document.querySelector('.lista-de-posts');
     
@@ -44,6 +48,9 @@
         tinymceCarregamento();
         carregaVideo('mHW1Hsqlp6A', 'Por que todos deveriam aprender a programar?');
         //montaMenuTrilhaVideosDinamicamente();
+
+
+
 
 
     const elemento = document.createElement('h3');
@@ -484,6 +491,7 @@ function tinymceCarregamento(){
                 Prism.highlightAll();
                 let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
                 _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
+                _divListaDePosts.style.height = '90vh';
             });
 
 
@@ -569,7 +577,7 @@ function tinymceCarregamento(){
         elements.forEach(function(item){
             item.classList.add('post-tools-color-change');
         });    
-        let _mask = document.querySelector('.mask-left-col');
+        //let _mask = document.querySelector('.mask-left-col');
         _mask.classList.add('mask-show');
     }
     
@@ -578,7 +586,7 @@ function tinymceCarregamento(){
         elements.forEach(function(item){
             item.classList.remove('post-tools-color-change');
         });    
-        let _mask = document.querySelector('.mask-left-col');
+        //let _mask = document.querySelector('.mask-left-col');
         _mask.classList.remove('mask-show');
     }
     
