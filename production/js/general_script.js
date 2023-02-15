@@ -454,9 +454,8 @@ function tinymceCarregamento(){
                 let _ano = _dateDDMMAAAA[0];
                 console.log(_dateArr);
 
-                str = `<div>Conteudo do post --> ${post_content.post}</div>`;
 
-                /*let str = `
+                str = `
                 <div class="post mb-4 p-4">
                     <div class="post-header">
                         <span class="post-date">
@@ -480,11 +479,11 @@ function tinymceCarregamento(){
                     ${`<small><i class="fa-solid fa-hashtag"></i><span>${post_content.post_id}</span></small>`}
                     </div>
                 </div>
-                `;*/
-                $(_divListaDePosts).append(str);               
+                ` + str;
+                _divListaDePosts.innerHTML = str;
                 Prism.highlightAll();
-                //let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
-                //_divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
+                let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
+                _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
             });
 
 
