@@ -10,6 +10,8 @@
         _formSalvaPost.classList.remove('remove');
         e.target.classList.add('remove');
      });
+
+     let str = '';
     
 
 
@@ -156,6 +158,7 @@
     let formData = {
         user_logado: _userIdDoUsuario
     }
+    
     $.ajax({
         type: "POST",
         url: "php/backend/monta_json_menu_categia_trilhas_videos.php",
@@ -426,14 +429,22 @@ function tinymceCarregamento(){
             url: "php/backend/lista_posts_por_conteudo.php",
             data: formData,
             dataType: "json",
-            encode: true
+            encode: true,
+            beforeSend: function( xhr ) {
+                //_listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
+            }
         }).done(function (data) { 
+            console.log('CONSOLE.LOG(data): '+data);
             console.log(data);
-            _divListaDePosts.innerHTML = '';
-            for(post of data){
+            console.log('CONSOLE.LOG(data): '+data);
+            //_divListaDePosts.innerHTML = '';            
+            _listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
+            //return;
+            //for(post_content of data){
+            data.forEach(function(post_content){
                 console.log(data);
-                console.log(post.post_dateupdate);
-                let _dateArr = post.post_dateupdate.split(" ");
+                console.log(post_content.post_dateupdate);
+                let _dateArr = post_content.post_dateupdate.split(" ");
                 let _postDate = _dateArr[0];
                 let _postHour = _dateArr[1];
                 let _dateDDMMAAAA = _postDate.split("-");
@@ -442,7 +453,10 @@ function tinymceCarregamento(){
                 _mes = _mes.length == 1 ? `0${_mes}` : _mes;
                 let _ano = _dateDDMMAAAA[0];
                 console.log(_dateArr);
-                let str = `
+
+                str = `<div>Conteudo do post --> ${post_content.post}</div>`;
+
+                /*let str = `
                 <div class="post mb-4 p-4">
                     <div class="post-header">
                         <span class="post-date">
@@ -453,30 +467,36 @@ function tinymceCarregamento(){
                             </h3>
                         </span>
                         <span class="post-tools">
-                            <i class="fa-solid fa-pencil edit-post" data-post_id_edit="${post.post_id}"></i>
-                            <i class="fa-solid fa-trash-can trash-post" data-post_id="${post.post_id}"></i>
+                            <i class="fa-solid fa-pencil edit-post" data-post_id_edit="${post_content.post_id}"></i>
+                            <i class="fa-solid fa-trash-can trash-post" data-post_id="${post_content.post_id}"></i>
                         </span>
                     </div>
                     <hr>
                     <div class="post-title">
-                        <h5>${post.post_title}</h5>
+                        <h5>${post_content.post_title}</h5>
                     </div>
-                    <div class="post-content">${post.post}</div>
+                    <div class="post-content">${post_content.post}</div>
                     <div class="post-footer">
-                    ${`<small><i class="fa-solid fa-hashtag"></i><span>${post.post_id}</span></small>`}
+                    ${`<small><i class="fa-solid fa-hashtag"></i><span>${post_content.post_id}</span></small>`}
                     </div>
                 </div>
-                `;  
-                $(_divListaDePosts).prepend(str);               
+                `;*/
+                $(_divListaDePosts).append(str);               
                 Prism.highlightAll();
-                let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
-                _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
-            }
+                //let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
+                //_divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
+            });
+
+
+
+
+
+            
             let _trashPost = document.querySelectorAll('.trash-post');
             let _editPost = document.querySelectorAll('.edit-post');
             let _editTitleEditor = document.querySelector('.container-editor #post_title');
             let _editContentEditor = document.querySelector('.container-editor #post_content');
-            _trashPost.forEach(function(trashPostIcon){
+            /*_trashPost.forEach(function(trashPostIcon){
                 setTimeout(function(){
                     trashPostIcon.parentNode.parentNode.parentNode.style.opacity = 1;
                 }, 500)
@@ -504,35 +524,29 @@ function tinymceCarregamento(){
                     _postAExcluir = e.target.dataset.post_id;
                     _postDaListaASerExcluido = e.target.parentNode.parentNode.parentNode;
                     console.log(_postDaListaASerExcluido);
-
                 });
             });
             _editPost.forEach(function(editPostIcon){
                 editPostIcon.addEventListener('click', function(e){
                     console.log(`Clicou no edit do post: ${e.target.dataset.post_id_edit}`);
-                    //e.target.parentNode.classList.add('post-tools-color-change');
                     desativaEditDeletePosts();
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
                     _postEditContext.style.backgroundColor = "beige";
-
                     console.log(_postEditContextTitle.textContent);
                     _editTitleEditor.value = _postEditContextTitle.textContent;
                     let __operation = document.querySelector('#operation');
                     __operation = __operation.value = 'update';
-                    document.querySelector('.salva-texto-do-editor').textContent = 'Atualizar';
-                    
+                    document.querySelector('.salva-texto-do-editor').textContent = 'Atualizar';                    
                     console.log('--------------------'+e.target.dataset.post_id_edit);
                     document.querySelector('#post_id_edit').value = e.target.dataset.post_id_edit;
 
-                    Prism.highlightAll();
-                    //CKEDITOR.instances.editor1.setData(_postEditContextContent);                            
+                    Prism.highlightAll();                            
                     tinymce.get("editor1").setContent(_postEditContextContent);
                 });
-            });
+            });*/
         })
-
     } 
 
 
@@ -568,4 +582,11 @@ function tinymceCarregamento(){
         let _mask = document.querySelector('.mask-left-col');
         _mask.classList.remove('mask-show');
     }
+    
+
+
+
+
+
+
     
