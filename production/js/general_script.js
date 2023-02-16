@@ -142,7 +142,7 @@
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');
-                        _divListaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
+                        //_divListaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
                         listaPostsPorConteudo(formData.id_conteudo);                       
                     }
@@ -463,7 +463,7 @@ function tinymceCarregamento(){
             console.log(data);
             console.log('CONSOLE.LOG(data): '+data);
             //_divListaDePosts.innerHTML = '';            
-            _listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
+            //_listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
             //return;
             //for(post_content of data){
             data.forEach(function(post_content){
