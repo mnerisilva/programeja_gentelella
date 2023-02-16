@@ -28,6 +28,9 @@
     let _snippetPostTitleRightHome = '';
     let _idConteudo = '';
 
+    const _esquerda = document.querySelector('.esquerda');
+    
+    const _containerEditor = document.querySelector('.editor');
 
     const _mask = document.querySelector('.mask-left-col');
 
@@ -72,6 +75,7 @@
 
     const _btnSalvaTextoDoEditor = document.querySelector('.salva-texto-do-editor');
     const _btnSalvaPostCancelar = document.querySelector('.salva-post-cancelar');
+    const _btnSalvaPostDescartar = document.querySelector('.salva-post-descartar');
 
 
     //_btnSalvaTextoDoEditor.addEventListener('click', function(){
@@ -135,7 +139,9 @@
                     } else {           
                         _operation = _formSalvaPost.querySelector('#operation');
                         // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
-                        _operation.value = 'save';
+                        _operation.value = 'save';                        
+                        _formSalvaPost.classList.add('remove');
+                        _addNewPost.classList.remove('remove');
                         _divListaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
                         listaPostsPorConteudo(formData.id_conteudo);                       
@@ -152,7 +158,16 @@
         // Botão "cancelar" form-salva-post
         _btnSalvaPostCancelar.addEventListener('click', function(){ 
             limpaEditor();
-            ativaEditDeletePosts();
+            ativaEditDeletePosts();  
+        });
+
+        
+        // Botão "descartar" form-salva-post
+        _btnSalvaPostDescartar.addEventListener('click', function(){ 
+            limpaEditor();
+            ativaEditDeletePosts();            
+            _formSalvaPost.classList.add('remove');            
+            _addNewPost.classList.remove('remove');
         });
 
 
@@ -255,6 +270,7 @@
                 console.log(e.target);
                 console.log(typeof e.target);
                 console.log(e.target.dataset.trilha_id);
+                _esquerda.style.height = '90vh';
                 _idConteudoEscolhidoUserLogado = e.target.dataset.id_conteudo;              
                 _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);

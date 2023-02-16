@@ -54,11 +54,15 @@
 
 .esquerda {
     position: relative;
-    height: 90vh;
-    /*height: 100vh;*/
+    height: 100vh;
     overflow: auto;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+.efeito-fade {
+    transition: background-color .6s;
+    background-color: lightsteelblue;
 }
 
 
