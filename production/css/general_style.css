@@ -293,14 +293,14 @@ pre[class*=language-].line-numbers {
 }
 
 .post .post-header {
-    /*background: aliceblue;
-    background: #f9f9f9;
-    background: #f7f7f7;*/
     border-left: solid #cccccc29;
     border-radius: 22px 3px 3px 22px;
     border-radius: 3px 22px 3px 22px;
     border-right: solid #cccccc29;
-    background-color: #f9f9f9;;
+    background-color: #f9f9f9;
+    border-bottom-color: #deb8878f;
+    border-bottom-style: double;
+}
 }
 
 .post-header {
@@ -320,6 +320,10 @@ pre[class*=language-].line-numbers {
     background-color: #fff;    
 }
 
+.post-date {
+    padding-left: 2em;
+}
+
 .post-tools {
     transition: all .5s cubic-bezier(0.335, 0.010, 0.030, 1.360);
     padding-right: .8rem;
@@ -330,10 +334,11 @@ pre[class*=language-].line-numbers {
 }
 
 .post-tools {
+    border-left: solid thin #ededed;
     transition: opacity .3s;
     opacity: 1;
     border: solid thin transparent;
-    box-shadow: 0px 0px 3px 0px #0000001a;
+    /*box-shadow: 0px 0px 3px 0px #0000001a;*/
     margin-right: 1em;
     background-color: #ffffff0f;
 }
@@ -377,6 +382,11 @@ pre[class*=language-].line-numbers {
     padding-top: 0 !important;
     margin-top: 2px !important;
     width: 90%;
+}
+
+.edit-post {
+    border-right: dotted thin;
+    padding: 0 7px 0 0;    
 }
 
 /* fontawesome ícones do sistema - achei que ficou bom*/
