@@ -3,6 +3,7 @@
 
     const _listaDePosts = document.querySelector('.lista-de-posts');
     _listaDePosts.innerHTML = '';
+    _listaDePosts.classList.add('remove');
     
      const _addNewPost = document.querySelector('.add-new-post');
 
@@ -277,7 +278,9 @@
                 _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
                 _addNewPost.classList.remove('remove');
-                _listaDePosts.classList.remove('remove');
+                setTimeout(() => {
+                    _listaDePosts.classList.remove('remove');                    
+                }, 600);
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
                 listaPostsPorConteudo(_idConteudoEscolhidoUserLogado);
             });
@@ -446,6 +449,7 @@ function tinymceCarregamento(){
     
 
     function listaPostsPorConteudo(id_conteudo) { // lista POSTs do vídeo escolhido no menu lateral (dentro da trilha, é claro) - visão MINHAS TRILHAS. DO ALUNO
+        str = ''
         var formData = {
             id_conteudo : id_conteudo
         };    
@@ -510,6 +514,7 @@ function tinymceCarregamento(){
                 let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
                 _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
                 _divListaDePosts.style.height = '90vh';
+                    _listaDePosts.classList.remove('remove');
             });
 
 

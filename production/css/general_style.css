@@ -39,7 +39,7 @@
     overflow: auto;
     overflow-x: hidden;
     visibility: visible;
-    /*transition: opacity 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360), visibility 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360);*/
+    transition: opacity 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360), visibility 500ms cubic-bezier(0.335, 0.010, 0.030, 1.360);
 }
 
 @media screen and (min-width: 760px) {
