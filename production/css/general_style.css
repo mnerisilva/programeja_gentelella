@@ -380,6 +380,18 @@ pre[class*=language-].line-numbers {
     padding: 0 7px 0 0;    
 }
 
+.edit-post:hover {
+    transition: color .1s;
+    color: #958e8e !important;
+    cursor: pointer;
+}
+
+.trash-post:hover {
+    transition: color .1s;
+    color: #958e8e !important;
+    cursor: pointer;
+}
+
 /* fontawesome ícones do sistema - achei que ficou bom*/
 
 .fa-solid, .fas {

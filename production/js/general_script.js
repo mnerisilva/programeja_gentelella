@@ -524,7 +524,7 @@ function tinymceCarregamento(){
             let _editPost = document.querySelectorAll('.edit-post');
             let _editTitleEditor = document.querySelector('.container-editor #post_title');
             let _editContentEditor = document.querySelector('.container-editor #post_content');
-            /*_trashPost.forEach(function(trashPostIcon){
+            _trashPost.forEach(function(trashPostIcon){
                 setTimeout(function(){
                     trashPostIcon.parentNode.parentNode.parentNode.style.opacity = 1;
                 }, 500)
@@ -573,7 +573,7 @@ function tinymceCarregamento(){
                     Prism.highlightAll();                            
                     tinymce.get("editor1").setContent(_postEditContextContent);
                 });
-            });*/
+            });
         })
     } 
 
