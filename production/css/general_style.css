@@ -313,9 +313,10 @@ pre[class*=language-].line-numbers {
 }
 
 .hora, .data {
-    border-right: solid #3333333b;
+    border-right: solid #3333330f;
+    border-left: solid #3333330f;
     padding-right: .3rem;
-    border-radius: 26px;
+    border-radius: 26px 26px 26px 26px;
     background-color: #fff;    
 }
 
