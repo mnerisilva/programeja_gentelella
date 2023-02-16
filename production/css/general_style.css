@@ -394,8 +394,15 @@ pre[class*=language-].line-numbers {
     transform:scale(1.2);
 }
 
-
-
+.btn-outline-dark.focus, .btn-outline-dark:focus {
+    box-shadow: none !important;
+}
+.btn.focus, .btn:focus {
+    box-shadow: none !important;
+}
+.btn-secondary:hover {
+    background-color: #2a3f54 !important;
+}
 
 
 

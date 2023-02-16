@@ -269,7 +269,9 @@
                 e.preventDefault();
                 console.log(e.target);
                 console.log(typeof e.target);
-                console.log(e.target.dataset.trilha_id);
+                console.log(e.target.dataset.trilha_id);                                       
+                _formSalvaPost.classList.add('remove');
+                _addNewPost.classList.remove('remove');
                 _esquerda.style.height = '90vh';
                 _idConteudoEscolhidoUserLogado = e.target.dataset.id_conteudo;              
                 _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
