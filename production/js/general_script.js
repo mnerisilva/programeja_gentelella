@@ -9,6 +9,7 @@
 
      _addNewPost.addEventListener('click', function(e){
         _formSalvaPost.classList.remove('remove');
+        desativaDivPostTools();
         e.target.classList.add('remove');
      });
 
@@ -151,6 +152,7 @@
                     //_postEditContext.style.height = 'auto';
                     //_post.style.height = 'auto';
                     ativaEditDeletePosts();
+                    ativaDivPostTools();
                 }
             });
         });
@@ -166,7 +168,8 @@
         // Botão "descartar" form-salva-post
         _btnSalvaPostDescartar.addEventListener('click', function(){ 
             limpaEditor();
-            ativaEditDeletePosts();            
+            ativaEditDeletePosts();
+            ativaDivPostTools();           
             _formSalvaPost.classList.add('remove');            
             _addNewPost.classList.remove('remove');
         });
@@ -270,7 +273,8 @@
                 e.preventDefault();
                 console.log(e.target);
                 console.log(typeof e.target);
-                console.log(e.target.dataset.trilha_id);                                       
+                console.log(e.target.dataset.trilha_id);
+                ativaDivPostTools();                                     
                 _formSalvaPost.classList.add('remove');
                 _addNewPost.classList.remove('remove');
                 _esquerda.style.height = '90vh';
@@ -278,9 +282,6 @@
                 _userIdUserLogado = document.querySelector('.id-usuario-logado').textContent;
                 //console.log(e.target.innerText, e.target.dataset.codigoyt);
                 _addNewPost.classList.remove('remove');
-                setTimeout(() => {
-                    _listaDePosts.classList.remove('remove');                    
-                }, 600);
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
                 listaPostsPorConteudo(_idConteudoEscolhidoUserLogado);
             });
@@ -449,7 +450,6 @@ function tinymceCarregamento(){
     
 
     function listaPostsPorConteudo(id_conteudo) { // lista POSTs do vídeo escolhido no menu lateral (dentro da trilha, é claro) - visão MINHAS TRILHAS. DO ALUNO
-        str = ''
         var formData = {
             id_conteudo : id_conteudo
         };    
@@ -460,16 +460,20 @@ function tinymceCarregamento(){
             dataType: "json",
             encode: true,
             beforeSend: function( xhr ) {
-                //_listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
             }
         }).done(function (data) { 
             console.log('CONSOLE.LOG(data): '+data);
             console.log(data);
+            console.log(data.length);
             console.log('CONSOLE.LOG(data): '+data);
-            //_divListaDePosts.innerHTML = '';            
-            //_listaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
-            //return;
-            //for(post_content of data){
+            str = '';
+            if(data.length == 0){
+                console.log('ENTROU AQUI PARA SAIR COM RETURN');
+                srt = `<p>&nbsp;</p>`;
+                _divListaDePosts.innerHTML = str;
+                _listaDePosts.classList.add('remove');
+                return;
+            }
             data.forEach(function(post_content){
                 console.log(data);
                 console.log(post_content.post_dateupdate);
@@ -482,14 +486,12 @@ function tinymceCarregamento(){
                 _mes = _mes.length == 1 ? `0${_mes}` : _mes;
                 let _ano = _dateDDMMAAAA[0];
                 console.log(_dateArr);
-
-
                 str = `
                 <div class="post mb-4 p-4">
                     <div class="post-header">
                         <span class="post-date">
                             <h3>
-                            ${`<i class="fa-solid fa-calendar-days"></i>&nbsp;<span>${_dia}/${_mes}/${_ano}</span>
+                            ${`<i class="fa-solid fa-calendar-days"></i>&nbsp;<span class="data">${_dia}/${_mes}/${_ano}</span>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="fa-solid fa-clock"></i>&nbsp;<span class="hora">${_postHour}</span> `}
                             </h3>
@@ -514,14 +516,10 @@ function tinymceCarregamento(){
                 let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
                 _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
                 _divListaDePosts.style.height = '90vh';
-                    _listaDePosts.classList.remove('remove');
+                console.log('CONSOLE.LOG STR: '+str);
             });
-
-
-
-
-
-            
+            _listaDePosts.classList.remove('remove');
+            str = '';            
             let _trashPost = document.querySelectorAll('.trash-post');
             let _editPost = document.querySelectorAll('.edit-post');
             let _editTitleEditor = document.querySelector('.container-editor #post_title');
@@ -611,6 +609,28 @@ function tinymceCarregamento(){
         });    
         //let _mask = document.querySelector('.mask-left-col');
         _mask.classList.remove('mask-show');
+    }
+
+        
+    function ativaDivPostTools(){
+        let elements = document.querySelectorAll('.lista-de-posts .post .post-header .post-tools');
+        elements.forEach(function(item){
+            item.style.opacity = 1;
+            item.style.pointerEvents = 'all';
+        });    
+        //let _mask = document.querySelector('.mask-left-col');
+        _mask.classList.add('mask-show');
+    }
+
+        
+    function desativaDivPostTools(){
+        let elements = document.querySelectorAll('.lista-de-posts .post .post-header .post-tools');
+        elements.forEach(function(item){
+            item.style.opacity = 0;
+            item.style.pointerEvents = 'none';
+        });    
+        //let _mask = document.querySelector('.mask-left-col');
+        _mask.classList.add('mask-show');
     }
     
 

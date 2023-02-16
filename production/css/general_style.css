@@ -293,12 +293,14 @@ pre[class*=language-].line-numbers {
 }
 
 .post .post-header {
-    background: aliceblue;
+    /*background: aliceblue;
     background: #f9f9f9;
-    background: #f7f7f7;
-    border-left: solid #cccccc69;
+    background: #f7f7f7;*/
+    border-left: solid #cccccc29;
     border-radius: 22px 3px 3px 22px;
-    border-right: solid #cccccc69;
+    border-radius: 3px 22px 3px 22px;
+    border-right: solid #cccccc29;
+    background-color: #f9f9f9;;
 }
 
 .post-header {
@@ -310,18 +312,29 @@ pre[class*=language-].line-numbers {
     z-index: 999;
 }
 
-.hora {
+.hora, .data {
     border-right: solid #3333333b;
     padding-right: .3rem;
-    border-radius: 26px;    
+    border-radius: 26px;
+    background-color: #fff;    
 }
 
 .post-tools {
+    transition: all .5s cubic-bezier(0.335, 0.010, 0.030, 1.360);
     padding-right: .8rem;
 }
 
 .post-tools i {
     margin-left: .5rem;
+}
+
+.post-tools {
+    transition: opacity .3s;
+    opacity: 1;
+    border: solid thin transparent;
+    box-shadow: 0px 0px 3px 0px #0000001a;
+    margin-right: 1em;
+    background-color: #ffffff0f;
 }
 
 .post-header .post-date h3 {
@@ -358,6 +371,12 @@ pre[class*=language-].line-numbers {
     height: auto;
 }
 
+.post hr {
+    border-top: 1px solid rgb(0 0 0 / 5%) !important;
+    padding-top: 0 !important;
+    margin-top: 2px !important;
+    width: 90%;
+}
 
 /* fontawesome ícones do sistema - achei que ficou bom*/
 
@@ -385,7 +404,7 @@ pre[class*=language-].line-numbers {
     font-size: 4em !important;
     right: 0.5em;
     bottom: 0.5em;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .add-new-post:hover {
