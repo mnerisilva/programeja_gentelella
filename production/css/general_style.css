@@ -28,10 +28,7 @@
     font-size: 2em !important;
 }
 
-#form-salva-post {
-    /*margin-left: .9em;
-    margin-right: .9em;*/
-}
+
 
 .lista-de-posts {
     padding: 1.9em;
@@ -128,9 +125,6 @@
     margin-bottom: 10px !important;
 }
 
-.nav.side-menu>li.current-page, .nav.side-menu>li {
-    /*margin-bottom: 20px;*/
-}
 
 .nav.side-menu>li.current-page, .nav.side-menu>li {
     border-top: solid thin #222a3273;
@@ -182,9 +176,7 @@ footer {
     margin-left: .5em;
 }
 
-.esconde {
-    
-}
+
 
 #form-salva-post {
     opacity: 1;
@@ -300,7 +292,6 @@ pre[class*=language-].line-numbers {
     background-color: #f9f9f9;
     border-bottom-color: #deb8878f;
     border-bottom-style: double;
-}
 }
 
 .post-header {
