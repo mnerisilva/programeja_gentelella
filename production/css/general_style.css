@@ -392,6 +392,41 @@ pre[class*=language-].line-numbers {
     cursor: pointer;
 }
 
+.confirma-exclusao-post {
+    display: flex;
+    position: absolute;
+    transition: margin-top .4s, opacity .4s;
+    top: -60px;
+    /* pointer-events: none; */
+    background-color: #fff;
+    border: solid thin #ddd;
+    z-index: 9999999999999;
+    opacity: 0;
+    padding-top: 0.5em;
+    padding-left: 0.4em;
+    padding-bottom: 0.3em;
+ }
+ 
+.confirma-exclusao-post::after {
+    position: absolute;
+    content: '';
+    height: 0;
+    border-style: solid;
+    border-width: 19px 84px 1px 0px;
+    border-color: #fff transparent transparent transparent;
+    margin-top: 42px;
+    transform: rotate(120deg);
+}
+ 
+ .btn-sim-exclui-post {
+    margin-left: .5em;
+ }
+
+.btn-sim-exclui-post, .btn-nao-exclui-post  {
+    padding: 0.1em 0.4em;
+    font-size: .8em;
+}
+
 /* fontawesome ícones do sistema - achei que ficou bom*/
 
 .fa-solid, .fas {

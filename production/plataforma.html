@@ -43,6 +43,9 @@
   </head>
 
   <body class="nav-md">
+
+    <div class="mascara"></div>
+
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -424,7 +427,23 @@
 
 
 
+      <!-- popup confirma exclusao post -->
+      <div class="confirma-exclusao-post">
+        Confirma exclusão: 
+        <form id="form-confirma-exclusao-post-sim">
+            <input type="hidden" name="post_id" value="" />
+            <button type="submit" class="btn btn-success btn-sim-exclui-post">
+                Sim
+            </button> 
+        </form>            
 
+        <form id="form-confirma-exclusao-post-nao">
+            <input type="hidden" name="post_id" value="" />
+            <button type="submit" class="btn btn-secondary btn-nao-exclui-post">
+                Não
+            </button> 
+        </form>
+      </div> 
 
 
 
