@@ -281,7 +281,7 @@
                 setTimeout(() => {
                     let _codeToolbarToolbar = document.querySelectorAll('.code-toolbar .toolbar');
                     _codeToolbarToolbar.forEach(function(item){
-                        item.remove();
+                        //item.remove();
                     });                    
                 }, 600);
                 _formSalvaPost.classList.add('remove');
