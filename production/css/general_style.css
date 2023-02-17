@@ -498,3 +498,24 @@ pre[class*=language-].line-numbers {
 
 
 
+.btn-select-code {    
+    /* padding-bottom: 0; */
+    margin-bottom: 0;
+    position: absolute;
+    margin-bottom: 0;
+    position: absolute;
+    z-index: 2;
+    right: 4.2em;
+    border: solid thin #d1d1d1a3;
+    font-size: small;
+}
+
+.btn-copy-code {
+    margin-bottom: 0;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    /* padding-bottom: 0; */
+    border: solid thin #d1d1d1a3;
+    font-size: small;
+}
