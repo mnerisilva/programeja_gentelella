@@ -289,7 +289,15 @@
                         arrToolbar[0].innerHTML = 'Select';
                         let local = $(_codeToolbarToolbar).closest('.code-toolbar');
                         local.prepend(arrToolbar[0]);
-                        arrToolbar[0] = [];
+                        arrToolbar[1] = [];
+                        arrToolbar[1] = document.createElement('button');
+                        arrToolbar[1].classList.add('btn');
+                        arrToolbar[1].classList.add('btn-outline-secondary');
+                        arrToolbar[1].classList.add('btn-copy-code');
+                        arrToolbar[1].innerHTML = 'Copy';
+                        local = $(_codeToolbarToolbar).closest('.code-toolbar');
+                        local.prepend(arrToolbar[1]);
+                        arrToolbar[1] = [];
                         item.style.display = 'none !important';
                         item.style.pointerEvents = 'none !important';
                         item.style.marginRight = '1800px';
