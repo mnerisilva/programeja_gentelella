@@ -508,6 +508,7 @@ pre[class*=language-].line-numbers {
     right: 4.2em;
     border: solid thin #d1d1d1a3;
     font-size: small;
+    margin-right: .5em;
 }
 
 .btn-copy-code {
