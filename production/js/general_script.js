@@ -261,6 +261,7 @@
 
         init_sidebar();
 
+        const arrToolbar = [];
 
         let todos = localInserir.querySelectorAll('.active');
         for(ob of todos){
@@ -281,7 +282,17 @@
                 setTimeout(() => {
                     let _codeToolbarToolbar = document.querySelectorAll('.code-toolbar .toolbar');
                     _codeToolbarToolbar.forEach(function(item){
-                        //item.remove();
+                        arrToolbar[0] = document.createElement('button');
+                        arrToolbar[0].classList.add('btn');
+                        arrToolbar[0].classList.add('btn-outline-secondary');
+                        arrToolbar[0].classList.add('btn-select-code');
+                        arrToolbar[0].innerHTML = 'Select';
+                        let local = $(_codeToolbarToolbar).closest('.code-toolbar');
+                        local.prepend(arrToolbar[0]);
+                        arrToolbar[0] = [];
+                        item.style.display = 'none !important';
+                        item.style.pointerEvents = 'none !important';
+                        item.style.marginRight = '1800px';
                     });                    
                 }, 600);
                 _formSalvaPost.classList.add('remove');
