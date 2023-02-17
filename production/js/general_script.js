@@ -15,7 +15,7 @@
 
      let str = '';
     
-
+    const _linkChevronRecolheVideo = document.querySelector('.video-content .x_panel .panel_toolbox .collapse-link');
 
     const _menuToggle = document.querySelector('#menu_toggle');
     const _body = document.querySelector('body');
@@ -137,7 +137,10 @@
                         _postEditContext.style.backgroundColor = 'initial';
                         // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
                         _operation = _formSalvaPost.querySelector('#operation');
-                        _operation.value = 'save';                
+                        _operation.value = 'save';
+                        $(_linkChevronRecolheVideo).trigger('click');                     
+                        _formSalvaPost.classList.add('remove');
+                        _addNewPost.classList.remove('remove');             
                     } else {           
                         _operation = _formSalvaPost.querySelector('#operation');
                         // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
@@ -558,6 +561,9 @@ function tinymceCarregamento(){
                 editPostIcon.addEventListener('click', function(e){
                     console.log(`Clicou no edit do post: ${e.target.dataset.post_id_edit}`);
                     desativaEditDeletePosts();
+                    $(_linkChevronRecolheVideo).trigger('click');                     
+                    _formSalvaPost.classList.remove('remove');
+                    _addNewPost.classList.add('remove');
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
