@@ -277,7 +277,13 @@
                 console.log(e.target);
                 console.log(typeof e.target);
                 console.log(e.target.dataset.trilha_id);
-                ativaDivPostTools();                                     
+                ativaDivPostTools();
+                setTimeout(() => {
+                    let _codeToolbarToolbar = document.querySelectorAll('.code-toolbar .toolbar');
+                    _codeToolbarToolbar.forEach(function(item){
+                        item.remove();
+                    });                    
+                }, 600);
                 _formSalvaPost.classList.add('remove');
                 _addNewPost.classList.remove('remove');
                 _esquerda.style.height = '90vh';
