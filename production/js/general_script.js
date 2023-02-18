@@ -282,25 +282,38 @@
                 setTimeout(() => {
                     let _codeToolbarToolbar = document.querySelectorAll('.code-toolbar .toolbar');
                     _codeToolbarToolbar.forEach(function(item){
+                    //for(item of _codeToolbarToolbar){
                         arrToolbar[0] = document.createElement('button');
                         arrToolbar[0].classList.add('btn');
                         arrToolbar[0].classList.add('btn-outline-secondary');
                         arrToolbar[0].classList.add('btn-select-code');
                         arrToolbar[0].innerHTML = 'Select';
-                        let local = $(_codeToolbarToolbar).closest('.code-toolbar');
-                        local.prepend(arrToolbar[0]);
+                        let _local = $(_codeToolbarToolbar).closest('.code-toolbar');
+                        _local.prepend(arrToolbar[0]);
                         arrToolbar[1] = [];
                         arrToolbar[1] = document.createElement('button');
                         arrToolbar[1].classList.add('btn');
                         arrToolbar[1].classList.add('btn-outline-secondary');
                         arrToolbar[1].classList.add('btn-copy-code');
                         arrToolbar[1].innerHTML = 'Copy';
-                        local = $(_codeToolbarToolbar).closest('.code-toolbar');
-                        local.prepend(arrToolbar[1]);
-                        arrToolbar[1] = [];
-                        item.style.display = 'none !important';
-                        item.style.pointerEvents = 'none !important';
-                        item.style.marginRight = '1800px';
+                        _local = $(item).closest('.code-toolbar');
+                        _local.prepend(arrToolbar[1]);
+                            console.log(item.parentElement);
+                            let xx = item.parentElement;
+                            console.log(typeof item);
+                            let _parentButtonCopy = item.parentNode();
+                            let _buttonCopy = xx.querySelector('.btn-copy-code');
+                            console.log(_buttonCopy);
+                            _buttonCopy.addEventListener('click',function(e){
+                                console.log('clicou no botão Copy');
+                                _buttonCopy.style.color = 'red !important';
+                            });
+                            _buttonCopy.style.color = 'red !important';
+                            arrToolbar[1] = [];
+                            item.style.display = 'none !important';
+                            item.style.pointerEvents = 'none !important';
+                            item.style.marginRight = '1800px';  
+                    //}
                     });                    
                 }, 600);
                 _formSalvaPost.classList.add('remove');
