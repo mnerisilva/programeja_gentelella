@@ -509,6 +509,8 @@ pre[class*=language-].line-numbers {
     border: solid thin #d1d1d1a3;
     font-size: small;
     margin-right: .5em;
+    font-size: x-small;
+    padding: 0.3em;
 }
 
 .btn-copy-code {
@@ -519,4 +521,6 @@ pre[class*=language-].line-numbers {
     /* padding-bottom: 0; */
     border: solid thin #d1d1d1a3;
     font-size: small;
+    font-size: x-small;
+    padding: 0.3em;
 }
