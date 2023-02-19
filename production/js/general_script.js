@@ -135,16 +135,16 @@
                         // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';
-                        $(_linkChevronRecolheVideo).trigger('click');                     
+                        //$(_linkChevronRecolheVideo).trigger('click');                     
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');             
                     } else {           
-                        /*_operation = _formSalvaPost.querySelector('#operation');
+                        _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
-                        listaPostsPorConteudo(formData.id_conteudo);*/                       
+                        listaPostsPorConteudo(formData.id_conteudo);                      
                     }
                     Prism.highlightAll();
                     //_postEditContext.style.height = 'auto';
@@ -529,9 +529,6 @@ function tinymceCarregamento(){
                     <div class="post-header">
                         <span class="post-date">
                             <h3>
-                            ${`<i class="fa-solid fa-calendar-days"></i>&nbsp;<span class="data">${_dia}/${_mes}/${_ano}</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="fa-solid fa-clock"></i>&nbsp;<span class="hora">${_postHour}</span> `}
                             </h3>
                         </span>
                         <span class="post-tools">
@@ -545,7 +542,13 @@ function tinymceCarregamento(){
                     </div>
                     <div class="post-content">${post_content.post}</div>
                     <div class="post-footer">
+                    <hr>
                     ${`<small><i class="fa-solid fa-hashtag"></i><span>${post_content.post_id}</span></small>`}
+                    
+                            ${`
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><i class="fa-solid fa-calendar-days"></i>&nbsp;<span class="data">${_dia}/${_mes}/${_ano}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="fa-solid fa-clock"></i>&nbsp;<span class="hora">${_postHour}</span></small>`}
                     </div>
                 </div>
                 ` + str;
@@ -596,11 +599,13 @@ function tinymceCarregamento(){
                 editPostIcon.addEventListener('click', function(e){
                     console.log(`Clicou no edit do post: ${e.target.dataset.post_id_edit}`);
                     desativaEditDeletePosts();
-                    $(_linkChevronRecolheVideo).trigger('click');                     
+                    //$(_linkChevronRecolheVideo).trigger('click');                     
                     _formSalvaPost.classList.remove('remove');
                     _addNewPost.classList.add('remove');
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
+                    console.log(_postEditContext);
+                    _postEditContext.querySelector('.post-content .btn-copy-code').remove();
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
                     _postEditContext.style.backgroundColor = "beige";
                     console.log(_postEditContextTitle.textContent);
