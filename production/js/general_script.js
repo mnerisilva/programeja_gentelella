@@ -282,12 +282,12 @@
                 setTimeout(() => {
                     let _codeToolbar = document.querySelectorAll('.code-toolbar');
                     _codeToolbar.forEach(function(item){
-                        arrToolbar[0] = document.createElement('button');
+                        /*arrToolbar[0] = document.createElement('button');
                         arrToolbar[0].classList.add('btn');
                         arrToolbar[0].classList.add('btn-outline-secondary');
                         arrToolbar[0].classList.add('btn-select-code');
                         arrToolbar[0].innerHTML = 'Select';
-                        item.prepend(arrToolbar[0]);
+                        item.prepend(arrToolbar[0]);*/
                         arrToolbar[1] = [];
                         arrToolbar[1] = document.createElement('button');
                         arrToolbar[1].classList.add('btn');
@@ -306,8 +306,13 @@
                         let _buttonCopy = item.querySelector('.btn-copy-code');
                         console.log(_buttonCopy);
                         _buttonCopy.addEventListener('click',function(e){
-                            console.log('clicou no botão Copy');
-                            _buttonCopy.style.color = 'red !important';
+                            e.target.innerText = 'Copied';
+                            setTimeout(() => {
+                                e.target.innerText = 'Copy';                                                                
+                            }, 700);
+                            let elemento = item.querySelector('code');
+                            selecionaTexto(elemento);
+
                         });
                         _buttonCopy.style.color = 'red !important'; 
                     });                   
@@ -675,8 +680,19 @@ function tinymceCarregamento(){
     
 
 
-
-
-
-
-    
+    function selecionaTexto(elemento){
+        if (document.body.createTextRange) {
+        const range = document.body.createTextRange();
+        range.moveToElementText(elemento);
+        range.select();
+        document.execCommand('copy');
+        } else if (window.getSelection) {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(elemento);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        selection.removeAllRanges();
+        }        
+    }
