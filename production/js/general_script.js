@@ -121,12 +121,9 @@
                 data: formData,
                 dataType: "json",
                 encode: true,
-                beforeSend: function(){
-                    console.log('aguardando resposta do backend');
-                },
                 success: function (data) {
                     console.log('TTTTTTTTTTTTTTTTTTTTTT '+data[0].status);
-                    _post.style.height = 'auto';
+                    //_post.style.height = 'auto';
                     if(data[0].status === 'update'){
                         _postEditContext.style.height = 'auto';
                         _btnSalvaTextoDoEditor.textContent = 'Salvar';
@@ -142,14 +139,12 @@
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');             
                     } else {           
-                        _operation = _formSalvaPost.querySelector('#operation');
-                        // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
+                        /*_operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');
-                        //_divListaDePosts.innerHTML = `<img class="spin" src="images/spin.gif" />`;
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
-                        listaPostsPorConteudo(formData.id_conteudo);                       
+                        listaPostsPorConteudo(formData.id_conteudo);*/                       
                     }
                     Prism.highlightAll();
                     //_postEditContext.style.height = 'auto';
@@ -302,6 +297,7 @@
                                 _toolbar.style.display = 'none !important';
                                 _toolbar.style.pointerEvents = 'none !important';
                                 _toolbar.style.marginRight = '1800px';
+                                _toolbar.remove();
                             }
                         let _buttonCopy = item.querySelector('.btn-copy-code');
                         console.log(_buttonCopy);
@@ -436,11 +432,11 @@ function tinymceCarregamento(){
         plugins: [
             'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
             'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'help', 'wordcount', 'codesample', 'fullscreen'
+            'insertdatetime', 'media', 'table', 'help', 'wordcount', 'codesample', 'fullscreen', 'code'
         ],
         toolbar_mode: 'sliding',
         toolbar1:'bold italic backcolor | alignleft aligncenter ' +
-        'removeformat | link image | help | fullscreen|   | codesample |   |',
+        'removeformat | link image | help | fullscreen|   | codesample |   | code',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
     });    
 }
