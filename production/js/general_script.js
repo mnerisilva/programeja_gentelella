@@ -285,15 +285,14 @@
                         item.prepend(arrToolbar[0]);*/
                         console.log(item);
                         console.log(item.querySelectorAll('pre').length); // usar este método para inserir button copy antes do PRE
-                        arrToolbar[1] = [];
-                        arrToolbar[1] = document.createElement('button');
-                        arrToolbar[1].classList.add('btn');
-                        arrToolbar[1].classList.add('btn-outline-secondary');
-                        arrToolbar[1].classList.add('btn-copy-code');
-                        arrToolbar[1].innerHTML = 'Copy';
-                        item.prepend(arrToolbar[1]);
+                        arrToolbar[0] = [];
+                        arrToolbar[0] = document.createElement('button');
+                        arrToolbar[0].classList.add('btn');
+                        arrToolbar[0].classList.add('btn-outline-secondary');
+                        arrToolbar[0].classList.add('btn-copy-code');
+                        arrToolbar[0].innerHTML = 'Copy';
+                        item.prepend(arrToolbar[0]);
                             arrToolbar[0] = [];
-                            arrToolbar[1] = [];
                         let _toolbar = item.querySelector('.toolbar');
                             if(_toolbar){
                                 _toolbar.style.display = 'none !important';
