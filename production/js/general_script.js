@@ -377,6 +377,67 @@
 
 
 
+    $('#form-confirma-exclusao-post-sim').submit(function(event){
+        event.preventDefault();
+        console.log('entrou no form que exclui post');
+        console.log(_idConteudo);
+        console.log(_postAExcluir);
+        console.log(_postDaListaASerExcluido);
+        let _btnSnippetListedLink = document.querySelectorAll('.snippet-listed-link');
+        console.log(_btnSnippetListedLink);
+        //_btnSnippetListedLink[_snippetDaListaASerExcluido].style.opacity = 0;
+        //_btnSnippetListedLink[_postDaListaASerExcluido].style.opacity = 0;
+        //_btnSnippetListedLink[_snippetDaListaASerExcluido].style.opacity = 0;
+        //$(_btnSnippetListedLink[_snippetDaListaASerExcluido]).fadeOut( "slow" );
+        excluiPost(parseInt(_postAExcluir));
+        //let _postExcluido = document.querySelector('.lista-de-posts '+_postDaListaASerExcluido);
+        console.log(_postDaListaASerExcluido);
+        //_postExcluido.style.opacity = 0;
+        //document.querySelector('.confirma-exclusao-post').textContent = 'POST EXCLUÍDO!!!';
+        _postDaListaASerExcluido.querySelector('.post-header').style.opacity = 0;
+            document.querySelector('.confirma-exclusao-post').style.opacity = 0;
+            document.querySelector('.mascara').style.opacity = 0;
+            _postDaListaASerExcluido.style.opacity = 0;
+            _postDaListaASerExcluido.style.height = 0;
+        setTimeout(function(){
+            _postDaListaASerExcluido.querySelector('.post-header').style.display = 'none';
+            _postDaListaASerExcluido.style.display = 'none';
+        },400)
+        setTimeout(function(){
+            //document.querySelector('.confirma-exclusao-post').style.display = 'none';
+            document.querySelector('.confirma-exclusao-post').style.top = -60+'px';
+            document.querySelector('.confirma-exclusao-post').style.left = 0;
+            document.querySelector('.confirma-exclusao-post').style.opacity = 0;
+            document.querySelector('.mascara').style.display = 'none';            
+            document.querySelector('.main_container').style.pointerEvents = 'all';
+
+            //listaPostsPorConteudo(id_conteudo);
+        },800)        
+    });
+
+
+    $('#form-confirma-exclusao-post-nao').submit(function(event){
+        event.preventDefault();
+        console.log('entrou no form que exclui post');
+        console.log(_postAExcluir);
+        //let _postExcluido = document.querySelector('.lista-de-posts '+_postDaListaASerExcluido);
+        console.log(_postDaListaASerExcluido);
+        _postDaListaASerExcluido.querySelector('.post-tools').style.opacity = 1;
+        _postDaListaASerExcluido.querySelector('.post-tools').style.pointerEvents = 'all';
+        //_postExcluido.style.opacity = 0;
+        //document.querySelector('.confirma-exclusao-post').textContent = 'POST EXCLUÍDO!!!';
+        
+            //document.querySelector('.confirma-exclusao-post').style.display = 'none';
+            document.querySelector('.confirma-exclusao-post').style.opacity = 0;
+            document.querySelector('.confirma-exclusao-post').style.top = -60+'px';
+            document.querySelector('.confirma-exclusao-post').style.left = 0; 
+                document.querySelector('.mascara').style.opacity = 0;
+            setTimeout(function(){  
+                document.querySelector('.mascara').style.display = 'none';            
+                document.querySelector('.main_container').style.pointerEvents = 'all';              
+            }, 500);                
+    }); 
+
 
 
 
@@ -722,3 +783,20 @@ function tinymceCarregamento(){
         selection.removeAllRanges();
         }        
     }
+
+    function excluiPost(post_id){
+        var formData = {
+            post_id: post_id
+        };    
+        $.ajax({
+            type: "POST",
+            url: "php/backend/exclui_post.php",
+            data: formData,
+            dataType: "json",
+            encode: true,
+        }).done(function (data) {
+            _postDaListaASerExcluido.style.opacity = 0;
+            _postDaListaASerExcluido.style.height = '1px';
+        });
+
+}
