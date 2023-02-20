@@ -410,7 +410,6 @@
             document.querySelector('.confirma-exclusao-post').style.opacity = 0;
             document.querySelector('.mascara').style.display = 'none';            
             document.querySelector('.main_container').style.pointerEvents = 'all';
-
             //listaPostsPorConteudo(id_conteudo);
         },800)        
     });
