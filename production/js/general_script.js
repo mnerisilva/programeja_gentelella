@@ -82,9 +82,9 @@
 
     //_btnSalvaTextoDoEditor.addEventListener('click', function(){
         $(_formSalvaPost).submit(function(event){
-            event.preventDefault();           
-            Prism.highlightAll();
-            //let _conteudoTextareaEditor = CKEDITOR.instances.editor1.getData();
+            event.preventDefault();
+            event.stopPropagation();           
+            //Prism.highlightAll();
             console.log('MMMMMMM '+tinymce.activeEditor);
             let _conteudoTextareaEditor = tinymce.get("editor1").getContent();
             let _postTitle = document.querySelector('#post_title').value; 
@@ -100,8 +100,7 @@
             }
             let _post_id_edit = _formSalvaPost.querySelector('#post_id_edit');    // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente
             _post_id_edit = _post_id_edit.value;                                  // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente                                  // captura a natureza da operação: 'save': INCLUI novo post, ou, 'update': ATUALIZA de post existente
-            Prism.highlightAll();
-            //CKEDITOR.instances.editor1.setData('');
+            //Prism.highlightAll();
             tinymce.get("editor1").setContent("");
             document.querySelector('#post_title').value = '';
             let formData = {
@@ -122,7 +121,7 @@
                 dataType: "json",
                 encode: true,
                 success: function (data) {
-                    console.log('TTTTTTTTTTTTTTTTTTTTTT '+data[0].status);
+                    console.log('TTTTTTTTTTTTTTTTTTTTTT VOLTANDO DO SALVA_POST.PHP no _formSalvaPost :'+data[0].status);
                     //_post.style.height = 'auto';
                     if(data[0].status === 'update'){
                         _postEditContext.style.height = 'auto';
@@ -238,21 +237,9 @@
                     arr = [];
                 });
         });
-
-        /*setTimeout(() => {
-            let todos = localInserir.querySelectorAll('.active');
-            for(ob of todos){
-                ob.classList.remove('li-a-clonar');
-                    ob.querySelector('ul').style.display = 'none';
-                    ob.classList.remove('active');
-                contador = contador + 1;
-            }
-        }, 100);*/
         setTimeout(() => {
             localInserir.style.opacity = 1;        
-        }, 10); 
-        
-
+        }, 10);
 
         init_sidebar();
 
@@ -315,16 +302,16 @@
                                 pre.prepend(arrToolbar[0]);
                                 arrToolbar[0] = [];  
                             } else if(preList.length > 1){
-                                let contador = 0;
+                                //let contador = 0;
                                 preList.forEach(function(preItem){
                                     console.log(preList.length);
-                                    arrToolbar[contador] = [];
-                                    arrToolbar[contador] = document.createElement('button');
-                                    arrToolbar[contador].classList.add('btn');
-                                    arrToolbar[contador].classList.add('btn-outline-secondary');
-                                    arrToolbar[contador].classList.add('btn-copy-code');
-                                    arrToolbar[contador].innerHTML = 'Copy';
-                                        arrToolbar[contador].addEventListener('click',function(e){
+                                    arrToolbar[0] = [];
+                                    arrToolbar[0] = document.createElement('button');
+                                    arrToolbar[0].classList.add('btn');
+                                    arrToolbar[0].classList.add('btn-outline-secondary');
+                                    arrToolbar[0].classList.add('btn-copy-code');
+                                    arrToolbar[0].innerHTML = 'Copy';
+                                        arrToolbar[0].addEventListener('click',function(e){
                                             e.target.innerText = 'Copied';
                                             setTimeout(() => {
                                                 e.target.innerText = 'Copy';                                                                
@@ -341,14 +328,14 @@
                                     console.log(preItem);
                                     //let pre_ = preItem.querySelector('pre');
                                     //console.log(pre_);
-                                    preItem.prepend(arrToolbar[contador]);
-                                    arrToolbar[contador] = [];  
-                                    contador++;
+                                    preItem.prepend(arrToolbar[0]);
+                                    arrToolbar[0] = [];  
+                                    //contador++;
                                 });
                             }                          
                         }
                     });                   
-                }, 600);
+                }, 50);
                 _formSalvaPost.classList.add('remove');
                 _addNewPost.classList.remove('remove');
                 _esquerda.style.height = '90vh';
@@ -359,7 +346,7 @@
                 carregaVideo(e.target.dataset.codigoyt, e.target.innerText);
                 listaPostsPorConteudo(_idConteudoEscolhidoUserLogado);
             });//
-        });//
+        });
     
     }, 20);
 
@@ -641,7 +628,9 @@ function tinymceCarregamento(){
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
                     console.log(_postEditContext);
-                    _postEditContext.querySelector('.post-content .btn-copy-code').remove();
+                        if(_postEditContext.querySelector('.post-content .btn-copy-code') > 0){
+                            _postEditContext.querySelector('.post-content .btn-copy-code').remove();
+                        }
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
                     _postEditContext.style.backgroundColor = "beige";
                     console.log(_postEditContextTitle.textContent);
@@ -652,7 +641,7 @@ function tinymceCarregamento(){
                     console.log('--------------------'+e.target.dataset.post_id_edit);
                     document.querySelector('#post_id_edit').value = e.target.dataset.post_id_edit;
 
-                    Prism.highlightAll();                            
+                    //Prism.highlightAll();                            
                     tinymce.get("editor1").setContent(_postEditContextContent);
                 });
             });
