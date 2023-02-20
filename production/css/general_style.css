@@ -258,7 +258,7 @@ pre[class*=language-].line-numbers {
     padding-left: 3.8em;
     counter-reset: linenumber;
     /*box-shadow: 4px 6px 8px -7px #00000059;*/
-    /*box-shadow: 0px 0px 3px 0px #00000059;*/
+    box-shadow: 0px 0px 3px 0px #0000001f;
 }
 
 
@@ -269,20 +269,21 @@ pre[class*=language-].line-numbers {
 .lista-de-posts .post {
     transition: background-color .3s;
     background-color: snow;
-    /*border-bottom: dotted thin #b1acac;*/
+    border-bottom: dotted thin #b1acacb3;
 }
 
 .post {
     transition: opacity .2s, height .4s, opacity .4s;
     overflow: overlay;
     /*opacity: 0;*/
+    height: auto !important;
 }
 
 .post {
     border: none;
     border: solid thin #e1e1e170;
-    height: auto;
-    /* border-radius: 5px; */
+    height: auto !important;
+    border-left-width: 8px !important;
 }
 
 .post .post-header {
@@ -513,6 +514,7 @@ pre[class*=language-].line-numbers {
     margin-right: .5em;
     font-size: x-small;
     padding: 0.3em;
+    top: 0;
 }
 
 .btn-copy-code {
@@ -525,6 +527,7 @@ pre[class*=language-].line-numbers {
     font-size: small;
     font-size: x-small;
     padding: 0.3em;
+    top: 0;
 }
 
 .post-footer {

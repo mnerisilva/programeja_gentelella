@@ -275,43 +275,78 @@
                 console.log(e.target.dataset.trilha_id);
                 ativaDivPostTools();
                 setTimeout(() => {
-                    let _codeToolbar = document.querySelectorAll('.code-toolbar');
-                    _codeToolbar.forEach(function(item){
+                    let _codeToolbarAll = document.querySelectorAll('.code-toolbar');
+                     _codeToolbarAll.forEach(function(item){
+                        console.log(item);
                         /*arrToolbar[0] = document.createElement('button');
                         arrToolbar[0].classList.add('btn');
                         arrToolbar[0].classList.add('btn-outline-secondary');
                         arrToolbar[0].classList.add('btn-select-code');
                         arrToolbar[0].innerHTML = 'Select';
                         item.prepend(arrToolbar[0]);*/
-                        console.log(item);
-                        console.log(item.querySelectorAll('pre').length); // usar este método para inserir button copy antes do PRE
-                        arrToolbar[0] = [];
-                        arrToolbar[0] = document.createElement('button');
-                        arrToolbar[0].classList.add('btn');
-                        arrToolbar[0].classList.add('btn-outline-secondary');
-                        arrToolbar[0].classList.add('btn-copy-code');
-                        arrToolbar[0].innerHTML = 'Copy';
-                        item.prepend(arrToolbar[0]);
-                            arrToolbar[0] = [];
-                        let _toolbar = item.querySelector('.toolbar');
-                            if(_toolbar){
-                                _toolbar.style.display = 'none !important';
-                                _toolbar.style.pointerEvents = 'none !important';
-                                _toolbar.style.marginRight = '1800px';
-                                _toolbar.remove();
-                            }
-                        let _buttonCopy = item.querySelector('.btn-copy-code');
-                        console.log(_buttonCopy);
-                        _buttonCopy.addEventListener('click',function(e){
-                            e.target.innerText = 'Copied';
-                            setTimeout(() => {
-                                e.target.innerText = 'Copy';                                                                
-                            }, 700);
-                            let elemento = item.querySelector('code');
-                            selecionaTexto(elemento);
-
-                        });
-                        _buttonCopy.style.color = 'red !important'; 
+                        let preList = item.querySelectorAll('pre'); 
+                        //console.log(item);
+                        console.log(preList);
+                        //console.log(typeof preList);
+                        if(preList.length != 0){
+                            if(preList.length == 1){
+                                console.log(preList.length);
+                                arrToolbar[0] = [];
+                                arrToolbar[0] = document.createElement('button');
+                                arrToolbar[0].classList.add('btn');
+                                arrToolbar[0].classList.add('btn-outline-secondary');
+                                arrToolbar[0].classList.add('btn-copy-code');
+                                arrToolbar[0].innerHTML = 'Copy';
+                                    arrToolbar[0].addEventListener('click',function(e){
+                                        e.target.innerText = 'Copied';
+                                        setTimeout(() => {
+                                            e.target.innerText = 'Copy';                                                                
+                                        }, 700);
+                                        let elemento = item.querySelector('code');
+                                        selecionaTexto(elemento);
+                                    });
+                                let _toolbar = item.querySelector('.toolbar');
+                                    if(_toolbar){                                    
+                                        _toolbar.remove();
+                                    }
+                                console.log(item);
+                                let pre = item.querySelector('pre');
+                                console.log(pre);
+                                pre.prepend(arrToolbar[0]);
+                                arrToolbar[0] = [];  
+                            } else if(preList.length > 1){
+                                let contador = 0;
+                                preList.forEach(function(preItem){
+                                    console.log(preList.length);
+                                    arrToolbar[contador] = [];
+                                    arrToolbar[contador] = document.createElement('button');
+                                    arrToolbar[contador].classList.add('btn');
+                                    arrToolbar[contador].classList.add('btn-outline-secondary');
+                                    arrToolbar[contador].classList.add('btn-copy-code');
+                                    arrToolbar[contador].innerHTML = 'Copy';
+                                        arrToolbar[contador].addEventListener('click',function(e){
+                                            e.target.innerText = 'Copied';
+                                            setTimeout(() => {
+                                                e.target.innerText = 'Copy';                                                                
+                                            }, 700);
+                                            let elemento = preItem.querySelector('code');
+                                            selecionaTexto(elemento);
+                                        });
+                                    let _toolbar = item.querySelector('.toolbar');
+                                        if(_toolbar){                                    
+                                            _toolbar.remove();
+                                        }
+                                    console.log(item);
+                                    console.log(preList);
+                                    console.log(preItem);
+                                    //let pre_ = preItem.querySelector('pre');
+                                    //console.log(pre_);
+                                    preItem.prepend(arrToolbar[contador]);
+                                    arrToolbar[contador] = [];  
+                                    contador++;
+                                });
+                            }                          
+                        }
                     });                   
                 }, 600);
                 _formSalvaPost.classList.add('remove');
@@ -558,7 +593,7 @@ function tinymceCarregamento(){
                 let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
                 _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
                 _divListaDePosts.style.height = '90vh';
-                console.log('CONSOLE.LOG STR: '+str);
+                //console.log('CONSOLE.LOG STR: '+str);
             });
             _listaDePosts.classList.remove('remove');
             str = '';            
