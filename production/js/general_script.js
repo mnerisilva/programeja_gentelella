@@ -283,6 +283,8 @@
                         arrToolbar[0].classList.add('btn-select-code');
                         arrToolbar[0].innerHTML = 'Select';
                         item.prepend(arrToolbar[0]);*/
+                        console.log(item);
+                        console.log(item.querySelectorAll('pre').length); // usar este método para inserir button copy antes do PRE
                         arrToolbar[1] = [];
                         arrToolbar[1] = document.createElement('button');
                         arrToolbar[1].classList.add('btn');
