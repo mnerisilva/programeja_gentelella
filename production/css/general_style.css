@@ -539,3 +539,10 @@ pre[class*=language-].line-numbers {
 .post-footer {
     padding-top: 0.5em;
 }
+
+
+/* prism.css - regras sobrescritas */
+
+.line-numbers .line-numbers-rows {
+    border-right: 1px solid goldenrod;
+}
