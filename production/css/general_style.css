@@ -546,3 +546,7 @@ pre[class*=language-].line-numbers {
 .line-numbers .line-numbers-rows {
     border-right: 1px solid goldenrod;
 }
+
+.bg-beige {
+    background-color: beige !important;
+}

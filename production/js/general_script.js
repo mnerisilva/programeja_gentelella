@@ -130,13 +130,15 @@
                         //_postEditContext = 
                         _postEditContext.querySelector('.post-title h5').textContent = formData.post_title;
                         _postEditContext.querySelector('.post-content').innerHTML = formData.post;                    
-                        _postEditContext.style.backgroundColor = 'initial';
+                        //_postEditContext.style.backgroundColor = 'initial';
                         // na linha a seguir retornamos a "natureza da operação" para o padrão: status 'save'
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';
                         //$(_linkChevronRecolheVideo).trigger('click');                     
                         _formSalvaPost.classList.add('remove');
-                        _addNewPost.classList.remove('remove');             
+                        _addNewPost.classList.remove('remove');
+                        console.log(_postEditContext);
+                        _postEditContext.classList.remove('bg-beige');             
                     } else {           
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
@@ -686,13 +688,17 @@ function tinymceCarregamento(){
                     _formSalvaPost.classList.remove('remove');
                     _addNewPost.classList.add('remove');
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
+                        if(_postEditContext.querySelector('.btn-copy-code') !== null){
+                            _postEditContext.querySelector('.btn-copy-code').remove();
+                        }
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
                     console.log(_postEditContext);
                         if(_postEditContext.querySelector('.post-content .btn-copy-code') > 0){
                             _postEditContext.querySelector('.post-content .btn-copy-code').remove();
                         }
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
-                    _postEditContext.style.backgroundColor = "beige";
+                    //console.log()
+                    _postEditContext.classList.add('bg-beige');
                     console.log(_postEditContextTitle.textContent);
                     _editTitleEditor.value = _postEditContextTitle.textContent;
                     let __operation = document.querySelector('#operation');
