@@ -14,6 +14,8 @@
      });
 
      let str = '';
+
+     const _rightCol = document.querySelector('.right_col');
     
     const _linkChevronRecolheVideo = document.querySelector('.video-content .x_panel .panel_toolbox .collapse-link');
 
@@ -168,7 +170,8 @@
         _btnSalvaPostDescartar.addEventListener('click', function(){ 
             limpaEditor();
             ativaEditDeletePosts();
-            ativaDivPostTools();           
+            ativaDivPostTools();
+            _postEditContext.classList.remove('bg-beige');
             _formSalvaPost.classList.add('remove');            
             _addNewPost.classList.remove('remove');
         });
@@ -618,6 +621,7 @@ function tinymceCarregamento(){
                         </span>
                         <span class="post-tools">
                             <i class="fa-solid fa-pencil edit-post" data-post_id_edit="${post_content.post_id}"></i>
+                            <span class="icons-separator"></span>
                             <i class="fa-solid fa-trash-can trash-post" data-post_id="${post_content.post_id}"></i>
                         </span>
                     </div>
@@ -721,7 +725,7 @@ function tinymceCarregamento(){
         tinymce.get("editor1").setContent(""); 
         let __posts = document.querySelectorAll('.post');
         __posts.forEach(function(__post){
-            __post.style.backgroundColor = "initial";
+            __post.style.backgroundColor = "snow";
         });
         _btnSalvaTextoDoEditor.textContent = 'Salvar';
         let _operation = document.querySelector('#operation');

@@ -324,7 +324,9 @@ pre[class*=language-].line-numbers {
 }
 
 .post-tools i {
-    margin-left: .5rem;
+    background-color: #f8efef;
+    /*margin-left: 0.5rem;*/
+    padding: 0.5em;
 }
 
 .post-tools {
@@ -386,20 +388,22 @@ pre[class*=language-].line-numbers {
 }
 
 .edit-post {
-    border-right: dotted thin;
+    /*border-right: dotted thin;*/
     padding: 0 7px 0 0;    
 }
 
 .edit-post:hover {
-    transition: color .1s;
-    color: #958e8e !important;
+    transition: color .2s;
+    color: #ffffff !important;
     cursor: pointer;
+    background-color: goldenrod;
 }
 
 .trash-post:hover {
-    transition: color .1s;
-    color: #958e8e !important;
+    transition: color .2s;
+    color: #ffffff !important;
     cursor: pointer;
+    background-color: goldenrod;
 }
 
 .confirma-exclusao-post {
@@ -549,4 +553,12 @@ pre[class*=language-].line-numbers {
 
 .bg-beige {
     background-color: beige !important;
+}
+
+.icons-separator {
+    padding: 0 0.1em;
+    display: inline block;
+    border-left-color: #daa5203d;
+    border-left-style: double;
+    border-left-width: unset;   
 }
