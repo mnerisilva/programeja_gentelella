@@ -269,7 +269,7 @@
         _videoLinks.forEach(function(link){
             link.addEventListener('click', function(e){
                 e.preventDefault();
-                //e.target.parentNode.dataset.color = '#fff !important';
+                e.target.parentNode.style.color = '#fff !important';
                 console.log(e.target);
                 console.log(e.target.parentNode);
                 console.log(e.target.parentNode.dataset.color);
