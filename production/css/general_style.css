@@ -11,9 +11,9 @@
     left: 3000px;
 }
 
-.child_menu li a::before {
+/*.child_menu li::before {
     background: #fff !important;
-}
+}*/
 
 .nav.side-menu>li.current-page, .nav.side-menu>li {
     border-right: 5px transparent;
@@ -605,4 +605,10 @@ pre[class*=language-].line-numbers {
     cursor: pointer;
     color: goldenrod !important;
 }
+
+/*.post-content pre .btn:hover {
+    color: #040000;
+    background-color: #ffffff !important;
+    border-color: #000000;
+}*/
 
