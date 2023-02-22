@@ -284,6 +284,8 @@ pre[class*=language-].line-numbers {
     border: solid thin #e1e1e170;
     height: auto !important;
     border-left-width: 8px !important;
+    border-right-width: 8px !important;
+    border-left-color: antiquewhite !important;
 }
 
 .post .post-header {

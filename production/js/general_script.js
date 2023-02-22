@@ -708,9 +708,17 @@ function tinymceCarregamento(){
                         }
                     _postEditContextTitle = _postEditContext.querySelector('.post-title h5');
                     console.log(_postEditContext);
-                        if(_postEditContext.querySelector('.post-content .btn-copy-code') > 0){
-                            _postEditContext.querySelector('.post-content .btn-copy-code').remove();
+                        if(_postEditContext.querySelectorAll('.post-content pre').length > 0){
+                            let _buttonsCopy = _postEditContext.querySelectorAll('.post-content pre .btn-copy-code');
+                            _buttonsCopy.forEach(function(_buttonsCopyItem){
+                                _buttonsCopyItem.remove();
+                            });
+                            //_postEditContext.querySelector('.post-content .btn-copy-code').remove();
+                            console.log('MAIOR QUE ZERO: '+_postEditContext.querySelectorAll('.post-content pre').length);
+                        } else {
+                            console.log('NÃO TEM TAG PRE: '+_postEditContext.querySelectorAll('.post-content pre').length);                            
                         }
+                    console.log(_postEditContext);
                     _postEditContextContent = _postEditContext.querySelector('.post-content').innerHTML;
                     //console.log()
                     _postEditContext.classList.add('bg-beige');
