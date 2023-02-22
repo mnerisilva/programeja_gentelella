@@ -568,3 +568,40 @@ pre[class*=language-].line-numbers {
     user-select: none;
     cursor: default !important;
 }
+
+
+.post-tools-bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: double 1px #daa52042;
+    background-color: #fffaf052;
+}
+
+.post-tools-bar .form-group {
+    margin-bottom: 0 !important;
+}
+
+.post-tools-bar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.post-tools-bar ul li {
+    font-size: 1.2em;
+    list-style: none;
+    margin-right: .8em;
+}
+
+.post-tools-bar ul li .tool-button {
+    color: #6b6b6b !important;
+    padding: .2em .4em;
+}
+.post-tools-bar ul li .tool-button:hover {
+    transition: color .2s;
+    cursor: pointer;
+    color: goldenrod !important;
+}
+
