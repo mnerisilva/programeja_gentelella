@@ -171,7 +171,10 @@
             limpaEditor();
             ativaEditDeletePosts();
             ativaDivPostTools();
-            _postEditContext.classList.remove('bg-beige');
+            console.log(_postEditContext);
+            if(_postEditContext !== ''){
+                _postEditContext.classList.remove('bg-beige');
+            }
             _formSalvaPost.classList.add('remove');            
             _addNewPost.classList.remove('remove');
             _listaDePosts.classList.remove('desativa-lista-de-posts');
