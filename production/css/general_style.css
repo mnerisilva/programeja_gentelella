@@ -31,7 +31,7 @@
 
 
 .lista-de-posts {
-    padding: 1.9em;
+    padding: 0 1.5em 1.9em 1em;
     height: 90vh;
     overflow: auto;
     overflow-x: hidden;
@@ -269,7 +269,9 @@ pre[class*=language-].line-numbers {
 .lista-de-posts .post {
     transition: background-color .3s;
     background-color: snow;
-    border-bottom: dotted thin #b1acacb3;
+    /* border-bottom: dotted thin #b1acacb3; */
+    border-bottom: double thin #c1b8b8;
+    border-bottom-width: initial;
 }
 
 .post {
@@ -368,6 +370,10 @@ pre[class*=language-].line-numbers {
 
 .post-title {
     padding: .5em .2em;
+}
+
+.post-title h5 {
+    font-weight: 700 !important;
 }
 
 .post-content p {
@@ -617,3 +623,15 @@ pre[class*=language-].line-numbers {
 /*.nav.child_menu>li.active {
     background-color: #7a7878 !important
 }*/
+
+.nav-item-config i {
+    color: goldenrod !important;
+    margin-left: 2em;
+    font-size: 1.7em;
+}
+
+.nav-item-config i:hover {
+    transition: color .2s;
+    cursor: pointer;
+    color: #a1a0a0 !important;
+}
