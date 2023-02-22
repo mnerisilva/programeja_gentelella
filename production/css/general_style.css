@@ -576,6 +576,7 @@ pre[class*=language-].line-numbers {
     justify-content: space-between;
     border-bottom: double 1px #daa52042;
     background-color: #fffaf052;
+    display: none;
 }
 
 .post-tools-bar .form-group {
