@@ -625,13 +625,14 @@ pre[class*=language-].line-numbers {
 }*/
 
 .nav-item-config i {
-    color: goldenrod !important;
+    color: #5A738E !important;
     margin-left: 2em;
-    font-size: 1.7em;
+    font-size: 1.9em;
+    padding: 0 .5em;
 }
 
 .nav-item-config i:hover {
     transition: color .2s;
     cursor: pointer;
-    color: #a1a0a0 !important;
+    color: goldenrod !important;
 }
