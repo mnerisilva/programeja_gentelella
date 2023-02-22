@@ -533,13 +533,13 @@ pre[class*=language-].line-numbers {
     margin-bottom: 0;
     position: absolute;
     z-index: 2;
-    right: 0;
+    right: -2px;
     /* padding-bottom: 0; */
     border: solid thin #d1d1d1a3;
     font-size: small;
     font-size: x-small;
     padding: 0.3em;
-    top: 0;
+    top: 3px;
 }
 
 .post-footer {

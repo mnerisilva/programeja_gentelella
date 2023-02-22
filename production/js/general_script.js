@@ -686,15 +686,15 @@ function tinymceCarregamento(){
                     confirm.style.left = _leftTrash;
                     confirm.style.top = _topTrash;
                     document.querySelector('.mascara').style.display = 'block';
+                    _postAExcluir = e.target.dataset.post_id;
+                    _postDaListaASerExcluido = e.target.parentNode.parentNode.parentNode;
+                    console.log(_postDaListaASerExcluido);
                     setTimeout(function(){
                         confirm.style.opacity = 1;
                         document.querySelector('.mascara').style.opacity = 1;
                         document.querySelector('.main_container').style.pointerEvents = 'none';
-                    },400)
-                    _postAExcluir = e.target.dataset.post_id;
-                    _postDaListaASerExcluido = e.target.parentNode.parentNode.parentNode;
-                    console.log(_postDaListaASerExcluido);
-                    _postDaListaASerExcluido.classList.add('bg-beige');
+                        _postDaListaASerExcluido.classList.add('bg-beige');
+                    },100)
                     console.log(_postDaListaASerExcluido);
                 });
             });
