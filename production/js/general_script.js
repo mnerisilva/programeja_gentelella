@@ -141,13 +141,16 @@
                         _addNewPost.classList.remove('remove');
                         console.log(_postEditContext);
                         _postEditContext.classList.remove('bg-beige');             
+                        _postEditContext.classList.remove('bg-beige');
+                        _listaDePosts.classList.remove('desativa-lista-de-posts');           
                     } else {           
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
-                        listaPostsPorConteudo(formData.id_conteudo);                      
+                        listaPostsPorConteudo(formData.id_conteudo);
+                        _listaDePosts.classList.remove('desativa-lista-de-posts');                      
                     }
                     Prism.highlightAll();
                     //_postEditContext.style.height = 'auto';
@@ -812,6 +815,7 @@ function tinymceCarregamento(){
         }).done(function (data) {
             _postDaListaASerExcluido.style.opacity = 0;
             _postDaListaASerExcluido.style.height = '1px';
+            _listaDePosts.classList.remove('desativa-lista-de-posts');
         });
 
 }
