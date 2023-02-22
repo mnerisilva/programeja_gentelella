@@ -174,6 +174,7 @@
             _postEditContext.classList.remove('bg-beige');
             _formSalvaPost.classList.add('remove');            
             _addNewPost.classList.remove('remove');
+            _listaDePosts.classList.remove('desativa-lista-de-posts');
         });
 
 
@@ -687,11 +688,12 @@ function tinymceCarregamento(){
             _editPost.forEach(function(editPostIcon){
                 editPostIcon.addEventListener('click', function(e){
                     console.log(`Clicou no edit do post: ${e.target.dataset.post_id_edit}`);
-                    desativaEditDeletePosts();
+                    //desativaEditDeletePosts();
                     //$(_linkChevronRecolheVideo).trigger('click');                     
                     _formSalvaPost.classList.remove('remove');
                     _addNewPost.classList.add('remove');
                     _postEditContext = e.target.parentNode.parentNode.parentNode;
+                    _listaDePosts.classList.add('desativa-lista-de-posts');
                         if(_postEditContext.querySelector('.btn-copy-code') !== null){
                             _postEditContext.querySelector('.btn-copy-code').remove();
                         }
@@ -742,6 +744,7 @@ function tinymceCarregamento(){
         //let _mask = document.querySelector('.mask-left-col');
         _mask.classList.add('mask-show');
     }
+
     
     function ativaEditDeletePosts(){
         let elements = document.querySelectorAll('.lista-de-posts .post .post-header .post-tools > i');

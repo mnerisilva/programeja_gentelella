@@ -562,3 +562,9 @@ pre[class*=language-].line-numbers {
     border-left-style: double;
     border-left-width: unset;   
 }
+
+.desativa-lista-de-posts {
+    pointer-events: none !important;
+    user-select: none;
+    cursor: default !important;
+}
