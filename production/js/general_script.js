@@ -142,13 +142,15 @@
                         console.log(_postEditContext);
                         _postEditContext.classList.remove('bg-beige');             
                         _postEditContext.classList.remove('bg-beige');
-                        _listaDePosts.classList.remove('desativa-lista-de-posts');           
+                        _listaDePosts.classList.remove('desativa-lista-de-posts');
+                        adicionaBotaoCopyNoPost(_postEditContext);
                     } else {           
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
                         _addNewPost.classList.remove('remove');
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
+                        //adicionaBotaoCopyNoPost(_postEditContext);
                         listaPostsPorConteudo(formData.id_conteudo);
                         _listaDePosts.classList.remove('desativa-lista-de-posts');                      
                     }
@@ -280,16 +282,7 @@
                     let _codeToolbarAll = document.querySelectorAll('.code-toolbar');
                      _codeToolbarAll.forEach(function(item){
                         console.log(item);
-                        /*arrToolbar[0] = document.createElement('button');
-                        arrToolbar[0].classList.add('btn');
-                        arrToolbar[0].classList.add('btn-outline-secondary');
-                        arrToolbar[0].classList.add('btn-select-code');
-                        arrToolbar[0].innerHTML = 'Select';
-                        item.prepend(arrToolbar[0]);*/
                         let preList = item.querySelectorAll('pre'); 
-                        //console.log(item);
-                        console.log(preList);
-                        //console.log(typeof preList);
                         if(preList.length != 0){
                             if(preList.length == 1){
                                 console.log(preList.length);
@@ -317,7 +310,6 @@
                                 pre.prepend(arrToolbar[0]);
                                 arrToolbar[0] = [];  
                             } else if(preList.length > 1){
-                                //let contador = 0;
                                 preList.forEach(function(preItem){
                                     console.log(preList.length);
                                     arrToolbar[0] = [];
@@ -341,11 +333,8 @@
                                     console.log(item);
                                     console.log(preList);
                                     console.log(preItem);
-                                    //let pre_ = preItem.querySelector('pre');
-                                    //console.log(pre_);
                                     preItem.prepend(arrToolbar[0]);
-                                    arrToolbar[0] = [];  
-                                    //contador++;
+                                    arrToolbar[0] = [];
                                 });
                             }                          
                         }
@@ -624,6 +613,7 @@ function tinymceCarregamento(){
                 _mes = _mes.length == 1 ? `0${_mes}` : _mes;
                 let _ano = _dateDDMMAAAA[0];
                 console.log(_dateArr);
+                console.log(post_content.post);
                 str = `
                 <div class="post mb-4 p-4">
                     <div class="post-header">
@@ -654,6 +644,10 @@ function tinymceCarregamento(){
                 </div>
                 ` + str;
                 _divListaDePosts.innerHTML = str;
+                let _ultimoPostInserido = _divListaDePosts.querySelector('.post');
+                adicionaBotaoCopyNoPost(_ultimoPostInserido);
+                console.log(_ultimoPostInserido);
+                console.log(post_content.post_id);
                 Prism.highlightAll();
                 let _heightDoPost = _divListaDePosts.querySelector('.post').offsetHeight;
                 _divListaDePosts.querySelector('.post').style.height = `${_heightDoPost}px`;
@@ -834,3 +828,69 @@ function tinymceCarregamento(){
         });
     }
 
+
+
+    function adicionaBotaoCopyNoPost(_postEditContext){
+            setTimeout(() => {
+                let arrToolbar = [];
+                let _codeToolbarAll = _postEditContext.querySelectorAll('.code-toolbar');
+                _codeToolbarAll.forEach(function(item){
+                    console.log(item);
+                    let preList = item.querySelectorAll('pre'); 
+                    if(preList.length != 0){
+                        if(preList.length == 1){
+                            console.log(preList.length);                            
+                            arrToolbar[0] = document.createElement('button');
+                            arrToolbar[0].classList.add('btn');
+                            arrToolbar[0].classList.add('btn-outline-secondary');
+                            arrToolbar[0].classList.add('btn-copy-code');
+                            arrToolbar[0].innerHTML = 'Copy';
+                                arrToolbar[0].addEventListener('click',function(e){
+                                    e.target.innerText = 'Copied';
+                                    setTimeout(() => {
+                                        e.target.innerText = 'Copy';                                                                
+                                    }, 700);
+                                    let elemento = item.querySelector('code');
+                                    selecionaTexto(elemento);
+                                });
+                            let _toolbar = item.querySelector('.toolbar');
+                                if(_toolbar){                                    
+                                    _toolbar.remove();
+                                }
+                            console.log(item);
+                            let pre = item.querySelector('pre');
+                            console.log(pre);
+                            pre.prepend(arrToolbar[0]);
+                            arrToolbar[0] = [];  
+                        } else if(preList.length > 1){
+                            preList.forEach(function(preItem){
+                                console.log(preList.length);
+                                arrToolbar[0] = [];
+                                arrToolbar[0] = document.createElement('button');
+                                arrToolbar[0].classList.add('btn');
+                                arrToolbar[0].classList.add('btn-outline-secondary');
+                                arrToolbar[0].classList.add('btn-copy-code');
+                                arrToolbar[0].innerHTML = 'Copy';
+                                    arrToolbar[0].addEventListener('click',function(e){
+                                        e.target.innerText = 'Copied';
+                                        setTimeout(() => {
+                                            e.target.innerText = 'Copy';                                                                
+                                        }, 700);
+                                        let elemento = preItem.querySelector('code');
+                                        selecionaTexto(elemento);
+                                    });
+                                let _toolbar = item.querySelector('.toolbar');
+                                    if(_toolbar){                                    
+                                        _toolbar.remove();
+                                    }
+                                console.log(item);
+                                console.log(preList);
+                                console.log(preItem);
+                                preItem.prepend(arrToolbar[0]);
+                                arrToolbar[0] = [];
+                            });
+                        }                          
+                    }
+                });                   
+            }, 50);
+    }   
