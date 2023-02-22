@@ -409,6 +409,7 @@
         console.log(_postDaListaASerExcluido);
         //_postExcluido.style.opacity = 0;
         //document.querySelector('.confirma-exclusao-post').textContent = 'POST EXCLUÍDO!!!';
+        _postDaListaASerExcluido.classList.remove('bg-beige');
         _postDaListaASerExcluido.querySelector('.post-header').style.opacity = 0;
             document.querySelector('.confirma-exclusao-post').style.opacity = 0;
             document.querySelector('.mascara').style.opacity = 0;
@@ -438,6 +439,7 @@
         console.log(_postDaListaASerExcluido);
         _postDaListaASerExcluido.querySelector('.post-tools').style.opacity = 1;
         _postDaListaASerExcluido.querySelector('.post-tools').style.pointerEvents = 'all';
+        _postDaListaASerExcluido.classList.remove('bg-beige');
         //_postExcluido.style.opacity = 0;
         //document.querySelector('.confirma-exclusao-post').textContent = 'POST EXCLUÍDO!!!';
         
@@ -691,6 +693,8 @@ function tinymceCarregamento(){
                     },400)
                     _postAExcluir = e.target.dataset.post_id;
                     _postDaListaASerExcluido = e.target.parentNode.parentNode.parentNode;
+                    console.log(_postDaListaASerExcluido);
+                    _postDaListaASerExcluido.classList.add('bg-beige');
                     console.log(_postDaListaASerExcluido);
                 });
             });
