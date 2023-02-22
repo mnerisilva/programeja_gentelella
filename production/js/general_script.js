@@ -547,7 +547,7 @@ function tinymceCarregamento(){
                 const _xTitle = document.querySelector('.esquerda .x_title h2');
                 _xTitle.innerHTML = `<i class="fa-solid fa-video"></i> <span class="titulo-do-video">${titulo_video}</span>`;
                 const _video = document.querySelector('#video-abertura');
-                _video.setAttribute('src', `https://www.youtube.com/embed/${codigoyt}?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0`);
+                _video.setAttribute('src', `https://www.youtube.com/embed/${codigoyt}?enablejsapi=1&version=3&rel=0&amp;autoplay=1&amp;start=0;end=1`);
         });                
     }
 
