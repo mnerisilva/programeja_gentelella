@@ -125,6 +125,8 @@
                 success: function (data) {
                     console.log('TTTTTTTTTTTTTTTTTTTTTT VOLTANDO DO SALVA_POST.PHP no _formSalvaPost :'+data[0].status);
                     //_post.style.height = 'auto';
+                    console.log(data[0].status);
+                    console.log(data[1].ui);
                     if(data[0].status === 'update'){
                         _postEditContext.style.height = 'auto';
                         _btnSalvaTextoDoEditor.textContent = 'Salvar';
@@ -144,7 +146,8 @@
                         _postEditContext.classList.remove('bg-beige');
                         _listaDePosts.classList.remove('desativa-lista-de-posts');
                         adicionaBotaoCopyNoPost(_postEditContext);
-                    } else {           
+                    } else {    
+                        let _postInserido = document.querySelector('.post:first-child');
                         _operation = _formSalvaPost.querySelector('#operation');
                         _operation.value = 'save';                        
                         _formSalvaPost.classList.add('remove');
@@ -152,7 +155,8 @@
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
                         //adicionaBotaoCopyNoPost(_postEditContext);
                         listaPostsPorConteudo(formData.id_conteudo);
-                        _listaDePosts.classList.remove('desativa-lista-de-posts');                      
+                        _listaDePosts.classList.remove('desativa-lista-de-posts'); 
+                        //adicionaBotaoCopyNoPost(_postInserido);
                     }
                     Prism.highlightAll();
                     //_postEditContext.style.height = 'auto';
@@ -644,7 +648,11 @@ function tinymceCarregamento(){
                 </div>
                 ` + str;
                 _divListaDePosts.innerHTML = str;
-                let _ultimoPostInserido = _divListaDePosts.querySelector('.post');
+                console.log(_divListaDePosts);
+                let teste = '#'+post_content.post_id;
+                console.log(teste);
+                let _ultimoPostInserido = _divListaDePosts.querySelector('.post:first-child');
+                console.log(_ultimoPostInserido);
                 adicionaBotaoCopyNoPost(_ultimoPostInserido);
                 console.log(_ultimoPostInserido);
                 console.log(post_content.post_id);
@@ -837,7 +845,7 @@ function tinymceCarregamento(){
                 _codeToolbarAll.forEach(function(item){
                     console.log(item);
                     let preList = item.querySelectorAll('pre'); 
-                    if(preList.length != 0){
+                    if(preList.length !== 0){
                         if(preList.length == 1){
                             console.log(preList.length);                            
                             arrToolbar[0] = document.createElement('button');
@@ -861,11 +869,12 @@ function tinymceCarregamento(){
                             let pre = item.querySelector('pre');
                             console.log(pre);
                             pre.prepend(arrToolbar[0]);
-                            arrToolbar[0] = [];  
+                            arrToolbar = [];  
                         } else if(preList.length > 1){
+                            arrToolbar = [];  
                             preList.forEach(function(preItem){
                                 console.log(preList.length);
-                                arrToolbar[0] = [];
+                                arrToolbar = [];
                                 arrToolbar[0] = document.createElement('button');
                                 arrToolbar[0].classList.add('btn');
                                 arrToolbar[0].classList.add('btn-outline-secondary');
@@ -887,7 +896,7 @@ function tinymceCarregamento(){
                                 console.log(preList);
                                 console.log(preItem);
                                 preItem.prepend(arrToolbar[0]);
-                                arrToolbar[0] = [];
+                                arrToolbar = [];
                             });
                         }                          
                     }
