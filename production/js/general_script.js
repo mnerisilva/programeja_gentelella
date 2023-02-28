@@ -126,7 +126,7 @@
                     console.log('TTTTTTTTTTTTTTTTTTTTTT VOLTANDO DO SALVA_POST.PHP no _formSalvaPost :'+data[0].status);
                     //_post.style.height = 'auto';
                     console.log(data[0].status);
-                    console.log(data[1].ui);
+                    //console.log(data[1].ui);
                     if(data[0].status === 'update'){
                         _postEditContext.style.height = 'auto';
                         _btnSalvaTextoDoEditor.textContent = 'Salvar';
