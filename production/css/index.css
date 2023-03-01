@@ -1,0 +1,265 @@
+.header {
+    width: 100%;
+    height: 7vh;
+    background-color: #f8fafb;
+    -webkit-box-shadow: -1px 3px 5px 0px rgb(239 239 239 / 54%);
+    -moz-box-shadow: -1px 3px 5px 0px rgba(239 239 239 / 54%);
+    box-shadow: -1px 3px 5px 0px rgb(239 239 239 / 54%);
+}
+
+
+.header ul {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header .logo img {
+    width: 1.2rem;
+}
+
+.container-registre-se, .container-registrouse-com-sucesso, .container-esqueceu-a-senha {
+    position: absolute;
+    transition: opacity .3s;
+    top: 0;
+    left: -2000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5f7;
+}
+.container-esqueceu-a-senha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 2;
+}
+.container-esqueceu-a-senha .container-mensagem-esqueceu-a-senha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-esqueceu-a-senha .container-mensagem-esqueceu-a-senha p {
+    width: 50%;
+}
+.form-registre-se {
+    background-color: #edf2f5;
+    background-color: rgba(52, 73, 94, 0.73);
+    background-color: rgb(97 111 124);
+    color: white;
+    padding: 2em;
+    width: 65%;
+    box-shadow: 4px 6px 8px -4px #ccc;
+}
+
+.esconde-registre-se {
+    pointer-events: all;
+    transition: opacity .7s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mostra-registre-se {
+    transition: opacity .7s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.registre-se-close, .registrouse-com-sucesso-close, .esqueceu-a-senha-close {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    font-size: 2.5em;
+    color: black;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.registrouse-com-sucesso-close:hover {
+    cursor: pointer;
+}
+
+.registre-se-close:hover {
+    color:cadetblue;
+    cursor: pointer;
+}
+
+.esqueci-a-senha {
+    top: 2px;
+    font-size: 14px;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.esqueci-a-senha:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.container-esqueci-a-senha {
+    position: absolute;
+    transition: opacity .3s;
+    top: 0;
+    left: -2000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5c2;
+}
+
+
+.esconde-esqueci-a-senhha {
+    transition: opacity .7s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mostra-esqueci-a-senha {
+    transition: opacity .7s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.esqueci-a-senha-close {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    font-size: 2.5em;
+    color: black;
+    padding: .5em;
+}
+
+.esqueci-a-senha-close:hover {
+    color:cadetblue;
+    cursor: pointer;
+}
+
+#registre_se .user-message-saved {
+    opacity: 0;
+}
+
+.alert-user-exist {
+    transition: opacity .3s;
+    opacity: 0;
+}
+
+#reg_email {
+    transition: background-color .3s;
+    color: #495057;
+}
+
+.reg_mail {
+    color: red !important;
+}
+
+.esconde-spin-registrese {
+    position: absolute;
+    left: -2000px;
+}
+
+.spin-registrese {
+    position: absolute;
+    width: 5rem;
+    /*left: 50%;
+    transform: translate(-50%, -50%);*/
+    left: -2000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+}
+.spin-registrese h3 {
+    background: darkblue;
+    padding: 0.5rem;
+    color: white;
+    width: 10rem;
+    text-align: center;
+    opacity: .8;
+}
+
+.spin-registrese img {
+    width: 5rem;
+}
+
+.wait-registre-se {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.wait-registre-se > input {
+    pointer-events: none;
+}
+
+.wait-spin {
+    position: absolute;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
+.esmaece-form-registre-se {
+    transition: background-color .3s;
+    background-color: rgb(190 208 224) !important;
+}
+
+.mensagem-sucesso-no-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mensagem-sucesso-no-registro p {
+    width: 50%;
+    color: #7b7777;
+}
+
+.mail-error {
+    color: red;
+    opacity: 0;
+    pointer-events: none;;
+}
+
+.inputErrorBorder {
+    border-color: red !important;
+}
+
+.container-button-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form_esqueceu_a_senha {
+    min-width: 30%;
+}
+
+#form_esqueceu_a_senha button {
+    width: 5rem;
+    margin-left: .2rem;
+    /*cursor: not-allowed;
+    opacity: .7;*/
+}
+
+.desabilita {
+    pointer-events: none !important;
+    opacity: .6 !important;
+    cursor: not-allowed;
+}
