@@ -1,3 +1,37 @@
+<?php
+// Conexão
+require_once '../backend/connect.php';
+
+// Sessão
+session_start();
+
+// Verificação
+if(!isset($_SESSION['logado'])):
+	header('Location: ../../index.php');
+endif;
+
+// Dados
+$user_id = $_SESSION['id_usuario'];
+$user_name =  $_SESSION['user_name'];
+$user_photo =  $_SESSION['user_photo'];
+$saudacao =  $_SESSION['saudacao'];  
+$sql = "SELECT * FROM user WHERE user_id = '$user_id'";
+$resultado = mysqli_query($conn, $sql);
+$dados = mysqli_fetch_array($resultado);
+mysqli_close($conn);
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -63,19 +97,34 @@
 
 
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
+            
+            <!--<div class="profile clearfix">
               <div class="profile_pic">
-                <!--<img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
                 <img src="../../images/users/women-s-white-and-black-button-up-collared-shirt-774909-300x300.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bem-vindo(a),</span>
                 <h2>Adriele Santos</h2><p id="id-user-logado" class="id-usuario-logado">29</p>
-                <!--<h2>Marcelo Neri da Silva</h2><p id="id-user-logado" class="id-usuario-logado">31</p>-->
+              </div>
+            </div>-->
+
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix esconde_profile">
+              <div class="profile_pic">
+                <!--<img src="../../images/img.jpg" alt="..." class="img-circle profile_img">-->
+                <img src="<?php echo $dados['user_photo']; ?>" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <div>
+                  <span><?php echo $saudacao; ?></span>
+                  <h2><?php echo $dados['user_name']; ?></h2>
+                  <span id="id-user-logado" class="id-usuario-logado" style="display: none !important;"><?php echo $dados['user_id']; ?></span>
+                </div>
+                <div></div>
               </div>
             </div>
-            <!-- /menu profile quick info -->
+            <!-- /menu profile quick info -->            
 
 
 
@@ -163,16 +212,16 @@
                 <li class="nav-item nav-item-config"><i class="fa-solid fa-gear tool-button"></i></li>
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/users/women-s-white-and-black-button-up-collared-shirt-774909-300x300.jpg" alt="">Adriele Santos
+                      <img src="<?php echo $dados['user_photo']; ?>" alt=""><?php echo $dados['user_name']; ?> <span class="span-plataforma-user-id" style="opacity: 0;"><?php echo $user_id; ?></span>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                      <a class="dropdown-item"  href="javascript:;">
+                    <!--<a class="dropdown-item"  href="javascript:;"> Profile</a>-->
+                      <!--<a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
-                      </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      </a>-->
+                  <!--<a class="dropdown-item"  href="javascript:;">Help</a>-->
+                    <a class="dropdown-item"  href="../logout/logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a>
                   </div>
                 </li>
 
@@ -184,7 +233,7 @@
                   <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                     <li class="nav-item">
                       <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -196,7 +245,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -208,7 +257,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -220,7 +269,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="../../images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>

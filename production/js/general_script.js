@@ -128,7 +128,7 @@
             console.log(formData);
             $.ajax({
                 type: "POST",
-                url: "php/backend/salva_post.php",
+                url: "../backend/salva_post.php",
                 data: formData,
                 dataType: "json",
                 encode: true,
@@ -291,6 +291,7 @@
                 console.log(e.target.parentNode.dataset.color);
                 console.log(typeof e.target);
                 console.log(e.target.dataset.trilha_id);
+                _trilhaIdEscolhidaUserLogado = e.target.dataset.trilha_id
                 ativaDivPostTools();
                 setTimeout(() => {
                     let _codeToolbarAll = document.querySelectorAll('.code-toolbar');
@@ -593,7 +594,8 @@ function tinymceCarregamento(){
     function listaPostsPorConteudo(id_conteudo) { // lista POSTs do vídeo escolhido no menu lateral (dentro da trilha, é claro) - visão MINHAS TRILHAS. DO ALUNO
         var formData = {
             id_conteudo : id_conteudo,
-            user_id: _idUserLogado
+            user_id: _idUserLogado,
+            trilha_id: _trilhaIdEscolhidaUserLogado
         };    
         $.ajax({
             type: "POST",
