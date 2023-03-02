@@ -71,8 +71,8 @@
               </div>
               <div class="profile_info">
                 <span>Bem-vindo(a),</span>
-                <!--<h2>Adriele Santos</h2><span class="id-usuario-logado">29</span>-->
-                <h2>Marcelo Neri da Silva</h2><span class="id-usuario-logado">31</span>
+                <h2>Adriele Santos</h2><p id="id-user-logado" class="id-usuario-logado">29</p>
+                <!--<h2>Marcelo Neri da Silva</h2><p id="id-user-logado" class="id-usuario-logado">31</p>-->
               </div>
             </div>
             <!-- /menu profile quick info -->

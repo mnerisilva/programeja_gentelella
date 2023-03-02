@@ -25,10 +25,20 @@
             _body.classList.toggle('nav-md');
             _body.classList.toggle('nav-sm');
     });
+
+   
+
+  
+               
+            const _idUserLogado = document.querySelector('#id-user-logado').textContent;
+        
+        console.log(_idUserLogado);
+   
+
+
     const obje = [];
     let _idConteudoEscolhidoUserLogado = '';
     let _trilhaIdEscolhidaUserLogado = '';
-    let _userIdUserLogado = ''; 
     let _snippetPostTitleRightHome = '';
     let _idConteudo = '';
 
@@ -50,7 +60,7 @@
     let _postEditContextContent = '';
     let _operation = '';
 
-    let _userIdDoUsuario = '31';
+    //let _userIdDoUsuario = '31';
 
         tinymceCarregamento();
         carregaVideo('mHW1Hsqlp6A', 'Por que todos deveriam aprender a programar?');
@@ -108,7 +118,7 @@
             let formData = {
                 id_conteudo: _idConteudoEscolhidoUserLogado,
                 trilha_id: _trilhaIdEscolhidaUserLogado,
-                user_id: _userIdUserLogado,
+                user_id: _idUserLogado,
                 post_title: _postTitle,
                 post: _conteudoTextareaEditor,
                 operation: _operation,
@@ -195,14 +205,14 @@
     // MONTAGEM ESTRUTURA DO MENU LATERAL COM AS TRILHAS E LINKS DE CONTEÚDOS DO USUÁRIO LOGADO - PÁGINA HOME AO LOGAR NO SISTEMA PARA USUÁRIOS DO TIPO DE ACESSO 2 - USUÁRIO COMUM (ALUNO)
 //function montaMenuTrilhaVideosDinamicamente() { 
     let __link = null;
-    console.log('CONTEÚDO DA VARIÁVEL _userIdDoUsuario AQUI: '+_userIdDoUsuario);
+    console.log('CONTEÚDO DA VARIÁVEL _userIdDoUsuario AQUI: '+_idUserLogado);
     let formData = {
-        user_logado: _userIdDoUsuario
+        user_logado: _idUserLogado
     }
     
     $.ajax({
         type: "POST",
-        url: "php/backend/monta_json_menu_categia_trilhas_videos.php",
+        url: "../backend/monta_json_menu_categia_trilhas_videos.php",
         data: formData,
         dataType: "json",
         encode: true
@@ -582,11 +592,12 @@ function tinymceCarregamento(){
 
     function listaPostsPorConteudo(id_conteudo) { // lista POSTs do vídeo escolhido no menu lateral (dentro da trilha, é claro) - visão MINHAS TRILHAS. DO ALUNO
         var formData = {
-            id_conteudo : id_conteudo
+            id_conteudo : id_conteudo,
+            user_id: _idUserLogado
         };    
         $.ajax({
             type: "POST",
-            url: "php/backend/lista_posts_por_conteudo.php",
+            url: "../backend/lista_posts_por_conteudo.php",
             data: formData,
             dataType: "json",
             encode: true,
