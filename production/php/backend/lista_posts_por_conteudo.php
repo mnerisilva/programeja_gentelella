@@ -8,7 +8,7 @@ $trilha_id	 = $_POST['trilha_id'];
 
 		
 		//$sql = "SELECT * FROM posts WHERE id_conteudo = '$id_conteudo' ORDER BY post_id";
-		$sql = "SELECT * FROM posts WHERE user_id = '$user_id' AND trilha_id = $trilha_id ORDER BY post_id";
+		$sql = "SELECT * FROM posts WHERE id_conteudo = $id_conteudo AND user_id = '$user_id' AND trilha_id = $trilha_id ORDER BY post_id";
 		$result = mysqli_query($conn, $sql);
 		
 
