@@ -643,13 +643,12 @@ pre[class*=language-].line-numbers {
     background-color: #fff !important;
     color: #333 !important;
     border-radius: 6px;
-    border: solid thin #c2c2c2;
+    box-shadow: 0px 0px 3px 0px #0000001f;
 }
 
 .code-toolbar a:hover {
-    background-color: #b1afaf !important;
     border-radius: 6px;
-    color: #fff !important;
+    color: goldenrod !important;
 }
 
 .code-toolbar a:before {
