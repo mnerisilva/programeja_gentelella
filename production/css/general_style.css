@@ -328,7 +328,7 @@ pre[class*=language-].line-numbers {
 }
 
 .post-tools i {
-    background-color: #f8efef;
+    /*background-color: #f8efef;*/
     /*margin-left: 0.5rem;*/
     padding: 0.5em;
 }
