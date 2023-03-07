@@ -418,7 +418,7 @@ pre[class*=language-].line-numbers {
     display: flex;
     position: absolute;
     transition: margin-top .4s, opacity .4s;
-    top: -60px;
+    top: -360px;
     /* pointer-events: none; */
     background-color: #fff;
     border: solid thin #ddd;

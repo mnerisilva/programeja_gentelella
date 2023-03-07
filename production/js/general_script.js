@@ -838,7 +838,7 @@ function tinymceCarregamento(){
         };    
         $.ajax({
             type: "POST",
-            url: "php/backend/exclui_post.php",
+            url: "../backend/exclui_post.php",
             data: formData,
             dataType: "json",
             encode: true,
