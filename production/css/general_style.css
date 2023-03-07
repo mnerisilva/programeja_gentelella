@@ -636,3 +636,27 @@ pre[class*=language-].line-numbers {
     cursor: pointer;
     color: goldenrod !important;
 }
+
+.code-toolbar a {
+    transition: color .2s;
+    padding: 5px !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    border-radius: 6px;
+    border: solid thin #c2c2c2;
+}
+
+.code-toolbar a:hover {
+    background-color: #b1afaf !important;
+    border-radius: 6px;
+    color: #fff !important;
+}
+
+.code-toolbar a:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0c1";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight:900; 
+ }
