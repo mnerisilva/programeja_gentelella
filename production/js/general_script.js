@@ -855,7 +855,8 @@ function tinymceCarregamento(){
     function adicionaBotaoCopyNoPost(_postEditContext){
             setTimeout(() => {
                 let arrToolbar = [];
-                let _codeToolbarAll = _postEditContext.querySelectorAll('.code-toolbar');
+                //let _codeToolbarAll = _postEditContext.querySelectorAll('.code-toolbar');
+                let _codeToolbarAll = document.querySelectorAll('.code-toolbar');
                 _codeToolbarAll.forEach(function(item){
                     console.log(item);
                     let preList = item.querySelectorAll('pre'); 
@@ -915,5 +916,5 @@ function tinymceCarregamento(){
                         }                          
                     }
                 });                   
-            }, 50);
+            }, 250);
     }   
