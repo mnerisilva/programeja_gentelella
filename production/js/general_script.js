@@ -252,11 +252,11 @@
                 arr[0] = LI_trilha.cloneNode(true);
                 arr[0].querySelector('a span span').innerText = ` ${objeto.trilha.nome} `;
                 ///////////////////////////////////////////////////////////////////////////
-                arr[0].addEventListener('click', function(e){
-                    console.log('cliquei na trilha: '+ objeto.trilha.nome);
-                    console.log(e.target);
-                    e.target.parentNode.parentNode.querySelector('.chevron').classList.toggle('chevron-down');
-                }); //////////////////////////////////////////////////////////////////////
+                //arr[0].addEventListener('click', function(e){
+                    //console.log('cliquei na trilha: '+ objeto.trilha.nome);
+                    //console.log(e.target);
+                    //e.target.parentNode.parentNode.querySelector('.chevron').classList.toggle('chevron-down');
+                //}); //////////////////////////////////////////////////////////////////////
                 child_menu = arr[0].querySelector('.child_menu');
                 localInserir.append(arr[0]);
                 arr = [];

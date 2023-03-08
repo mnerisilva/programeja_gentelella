@@ -98,6 +98,10 @@ if(isset($_POST['btn-entrar'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="login/fonts/icomoon/style.css">
 
@@ -128,7 +132,7 @@ if(isset($_POST['btn-entrar'])){
         <li>
           <div class="logo">
             <span><img src="images/favicon.jpg" alt=""></span>
-            <span> GE</span><span style="color: purple; font-weight: 600;">sTri</span> - Gestão de Trilhas de Estudo
+            <span> GE</span><span style="color: purple; font-weight: 600;">sTri</span><span class="titulo-logo"> - Gestão de Trilhas de Estudo</span>
           </div>
         </li>
       </ul>
@@ -142,13 +146,14 @@ if(isset($_POST['btn-entrar'])){
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="login/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+          <!--<img src="login/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">-->
+          <img src="login/images/imagem_tela_login.svg" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4">
-              <h3>Gestão de trilhas de estudo</h3>
+              <h3 class="titulo">Gestão de trilhas de estudo</h3>
 
               <?php 
               if(!empty($erros)):
@@ -183,7 +188,7 @@ if(isset($_POST['btn-entrar'])){
               <input type="submit" value="Entrar" class="btn btn-block btn-primary" name="btn-entrar" style="margin-bottom: 1.3em;">
               <!--<br />-->
               <div style="width: 100%; text-align: center;">
-                <span style="text-align: center; color: #888;">Caso ainda não tenha cadastro, clique no botão abaixo. </span> <i class="fa-regular fa-hand-point-up" style="transform: rotate(180deg); color: #483dff;"></i>
+                <span style="text-align: center; color: #888;">Caso ainda não tenha cadastro, clique no botão abaixo. </span> <i class="fa-regular fa-hand-point-up" style="transform: rotate(180deg); color: goldenrod;"></i>
               </div>
               <button type="button" id="registre_se_button" class="btn btn-block btn-secondary" style="margin-top: .4em;">Cadastre-se</button>
 

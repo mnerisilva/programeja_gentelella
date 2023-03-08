@@ -263,3 +263,8 @@ header .logo img {
     opacity: .6 !important;
     cursor: not-allowed;
 }
+
+.titulo, .titulo-logo {
+    font-family: 'Roboto Slab', serif;
+    color: #646363;    
+}

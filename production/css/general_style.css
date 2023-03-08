@@ -691,7 +691,7 @@ pre[class*=language-].line-numbers {
     top: 10px !important;
 }
 
-.chevron {
+/*.chevron {
     transition: transform .2s;
     transform: rotate(0deg) !important;
 }
@@ -699,4 +699,4 @@ pre[class*=language-].line-numbers {
 .chevron-down {
     transition: transform .2s;
     transform: rotate(-90deg) !important;
-}
+}*/
