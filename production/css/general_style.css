@@ -645,6 +645,7 @@ pre[class*=language-].line-numbers {
     border-radius: 6px;
     box-shadow: 0px 0px 3px 0px #0000001f;
     border-bottom: solid 2px #79554840;
+    font-style: oblique;
 }
 
 .code-toolbar a:hover {
@@ -658,7 +659,8 @@ pre[class*=language-].line-numbers {
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
-    font-weight:900; 
+    font-weight:900;
+    font-size: small;
  }
 
  
