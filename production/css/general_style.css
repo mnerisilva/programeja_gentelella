@@ -644,6 +644,7 @@ pre[class*=language-].line-numbers {
     color: #333 !important;
     border-radius: 6px;
     box-shadow: 0px 0px 3px 0px #0000001f;
+    border-bottom: solid 2px #79554840;
 }
 
 .code-toolbar a:hover {
@@ -659,3 +660,19 @@ pre[class*=language-].line-numbers {
     vertical-align: middle;
     font-weight:900; 
  }
+
+ 
+
+ @media (max-width: 450px)
+{
+    .side-menu li a i {
+        display: none !important;
+     }
+     .esquerda {
+        height: 40vh !important;
+     }
+
+     .container-editor {
+        display: none !important;
+     }
+}
