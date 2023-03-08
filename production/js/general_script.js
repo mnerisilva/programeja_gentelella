@@ -165,6 +165,7 @@
                         console.log('XXXXXXXXXXXXXXXXXXXXXX '+formData.id_conteudo);
                         //adicionaBotaoCopyNoPost(_postEditContext);
                         listaPostsPorConteudo(formData.id_conteudo);
+                        adicionaBotaoCopyNoPost(_postEditContext);
                         _listaDePosts.classList.remove('desativa-lista-de-posts'); 
                         //adicionaBotaoCopyNoPost(_postInserido);
                     }
