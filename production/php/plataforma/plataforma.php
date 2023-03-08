@@ -458,7 +458,7 @@ mysqli_close($conn);
 
 
 <div class="container-clone">
-    <li class="li-a-clonar"><a style="display: flex; align-items: baseline; justify-content: space-between;"><span style="display: flex; align-items: baseline;"><i class="fa-solid fa-diagram-project"></i> <span class="span-nome-trilha"> Css </span></span> <span class="fa fa-chevron-down"></span></a> 
+    <li class="li-a-clonar"><a style="display: flex; align-items: baseline; justify-content: space-between;"><span style="display: flex; align-items: baseline;"><i class="fa-solid fa-diagram-project"></i> <span class="span-nome-trilha"> Css </span></span> <span class="fa fa-chevron-down chevron chevron-down"></span></a> 
       <ul class="nav child_menu">
       </ul>
     </li>

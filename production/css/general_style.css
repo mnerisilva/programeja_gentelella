@@ -640,11 +640,12 @@ pre[class*=language-].line-numbers {
 .code-toolbar a {
     transition: color .2s;
     padding: 5px !important;
-    background-color: #fff !important;
+    /*background-color: #fff !important;*/
+    background-color: #faf0e666;
     color: #333 !important;
     border-radius: 6px;
-    box-shadow: 0px 0px 3px 0px #0000001f;
-    border-bottom: solid 2px #79554840;
+    /*box-shadow: 0px 0px 3px 0px #0000001f;
+    border-bottom: solid 2px #79554840;*/
     font-style: oblique;
 }
 
@@ -663,6 +664,8 @@ pre[class*=language-].line-numbers {
     font-size: small;
  }
 
+
+
  
 
  @media (max-width: 450px)
@@ -677,4 +680,23 @@ pre[class*=language-].line-numbers {
      .container-editor {
         display: none !important;
      }
+}
+
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid #9da4ab !important;
+}
+
+.nav-md ul.nav.child_menu li:before {
+    background: #9da4ab !important;
+    top: 10px !important;
+}
+
+.chevron {
+    transition: transform .2s;
+    transform: rotate(0deg) !important;
+}
+
+.chevron-down {
+    transition: transform .2s;
+    transform: rotate(-90deg) !important;
 }
