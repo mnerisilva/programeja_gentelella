@@ -860,7 +860,8 @@ function tinymceCarregamento(){
                     let preList = item.querySelectorAll('pre'); 
                     if(preList.length !== 0){
                         if(preList.length == 1){
-                            console.log(preList.length);                            
+                            console.log(preList.length);
+                            arrToolbar[0] = [];                            
                             arrToolbar[0] = document.createElement('button');
                             arrToolbar[0].classList.add('btn');
                             arrToolbar[0].classList.add('btn-outline-secondary');
@@ -882,9 +883,8 @@ function tinymceCarregamento(){
                             let pre = item.querySelector('pre');
                             console.log(pre);
                             pre.prepend(arrToolbar[0]);
-                            arrToolbar = [];  
+                            arrToolbar[0] = [];  
                         } else if(preList.length > 1){
-                            arrToolbar = [];  
                             preList.forEach(function(preItem){
                                 console.log(preList.length);
                                 arrToolbar = [];
@@ -909,7 +909,7 @@ function tinymceCarregamento(){
                                 console.log(preList);
                                 console.log(preItem);
                                 preItem.prepend(arrToolbar[0]);
-                                arrToolbar = [];
+                                arrToolbar[0] = [];
                             });
                         }                          
                     }
