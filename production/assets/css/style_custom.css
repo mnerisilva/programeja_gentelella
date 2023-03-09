@@ -36,8 +36,9 @@ main {
     transform: scale(1);    
     color: #fff;
     width: 5rem;
-    border: solid thin #2e0d36;
-    background-color: #723182;
+    border: solid thin #5d7388;
+    /*background-color: #723182;*/
+    background-color: #2A3F54;
     border-radius: .3rem;
     padding: .3rem .6rem;
     font-size: 1.3rem;
@@ -47,7 +48,8 @@ main {
     transition: transform, background-color, color .3s linear;
     transform: scale(.9);
     text-decoration: none;
-    color: #723182;
+    /*color: #723182;*/
+    color: #2A3F54;
     background-color: #fff;
 }
 
@@ -63,8 +65,14 @@ main {
 
 .slogan1 {
     font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #2A3F54 !important;
 }
 
 .btn-seinscreva {
     text-align: center;
+}
+
+
+.navbar-brand img {
+    width: 1em !important;
 }
